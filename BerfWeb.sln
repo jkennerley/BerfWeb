@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doco", "Doco", "{369AA361-8
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FDac", "FDac\FDac.fsproj", "{D7439C8E-05A1-4387-A896-BF74F4FCFDAB}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FDac.IntegrationTest", "FDac.IntegrationTest\FDac.IntegrationTest.fsproj", "{8F37EF99-9586-41F4-893D-665D3A1755A5}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BerfDac.IntegrationTest", "BerfDac.IntegrationTest\BerfDac.IntegrationTest.fsproj", "{8F37EF99-9586-41F4-893D-665D3A1755A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,7 +9,7 @@
     <ProjectGuid>8f37ef99-9586-41f4-893d-665d3a1755a5</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>FDac.IntegrationTest</RootNamespace>
-    <AssemblyName>FDac.IntegrationTest</AssemblyName>
+    <AssemblyName>Berf.IntegrationTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
     <Name>FDac.IntegrationTest</Name>
@@ -57,12 +57,12 @@
     <Error Condition="!Exists('..\packages\xunit.core.2.0.0\build\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.0.0\build\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS\xunit.core.props'))" />
   </Target>
   <ItemGroup>
-    <Compile Include="FDac.DataAccess.BerfClient.fs" />
-    <Compile Include="FDac.DataAccess.Idea.fs" />
-    <Compile Include="KickoutDataAccessAutoFiles.IntegrationTest.fs" />
+    <Compile Include="BerfKickoutDac.IntegrationTest.fs" />
     <Content Include="packages.config" />
     <Content Include="App.config" />
     <None Include="xutFDacIntegrateTest.ps1" />
+    <Compile Include="DEPRACATE_FDac.DataAccess.Idea.fs" />
+    <Compile Include="DEPRACATE_FDac.DataAccess.BerfClient.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Data.SqlClient">

@@ -53,11 +53,12 @@
   -->
   <Import Project="C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio\v12.0\FSharp\Microsoft.FSharp.Targets" />
   <ItemGroup>
-    <None Include="AutoDataAccess.sql" />
+    <None Include="BerfSchema.sql" />
+    <None Include="Berf.DataAccessAuto.sql" />
     <Compile Include="Berf.DomainTypes.fs" />
     <Compile Include="Berf.ConnectionConfig.fs" />
-    <Compile Include="Berf.DataAccess.fs" />
-    <Compile Include="Berf.Crud.fs" />
+    <Compile Include="Berf.DataAccessTypesAuto.fs" />
+    <Compile Include="Berf.DataAccessCrudAuto.fs" />
     <Compile Include="Berf.Repo.fs" />
     <Compile Include="BerfController.fs" />
     <Content Include="packages.config" />
