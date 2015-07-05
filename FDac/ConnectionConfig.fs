@@ -1,4 +1,4 @@
 ﻿module FDac.DataAccessConfig 
 
-    [<Literal>]
-    let CnString = "name=Berf"
+[<Literal>]
+let CnString = "name=Berf"

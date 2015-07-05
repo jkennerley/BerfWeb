@@ -50,13 +50,10 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <None Include="AutoDataAccess.sql" />
+    <Compile Include="ConnectionConfig.fs" />
     <Compile Include="Literal.fs" />
     <Compile Include="Util.fs" />
     <Compile Include="DomainTypes.fs" />
-    <Compile Include="BerfClient.fs" />
-    <Compile Include="Idea.fs" />
-    <Compile Include="ConnectionConfig.fs" />
-    <Compile Include="DataAccessEnum.fs" />
     <Compile Include="DataAccessSchema.fs" />
     <Compile Include="FDac.SchemaFunctions.fs" />
     <Compile Include="AutoDataAccessTypes.fs" />

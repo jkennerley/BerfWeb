@@ -1,6 +1,6 @@
 
 [<AutoOpen>]
-module Berf.DataAccessCrud 
+module BerfDac.Crud 
 
 open FSharp.Data
 

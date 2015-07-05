@@ -4,61 +4,13 @@ open System
 open System.Web
 open System.Web.Mvc
 
-open Berf.DomainTypes
-open Berf.DataAccessRepo
+open BerfDac.DomainTypes
+open BerfDac.Crud
+open BerfDac.Repo
+open BerfDac.BerfClient
 
 type BerfController() =
     inherit Controller()
-
-    ///
-    let createBerfClient berfClient ord sessionId renderId (httpContext:HttpContext) =
-        { 
-            BerfClient.id               = Guid.NewGuid()
-            sessionId                   = sessionId
-            renderId                    = renderId
-            ord                         = ord 
-            url                         = berfClient.url
-            entryType                   = berfClient.entryType
-            source                      = berfClient.source
-            created                     = DateTime.Now
-
-            unloadEventStart            = berfClient.unloadEventStart            
-            unloadEventEnd              = berfClient.unloadEventEnd              
-            linkNegotiationStart        = berfClient.linkNegotiationStart        
-            linkNegotiationEnd          = berfClient.linkNegotiationEnd          
-            redirectStart               = berfClient.redirectStart               
-            redirectEnd                 = berfClient.redirectEnd                 
-            fetchStart                  = berfClient.fetchStart                  
-            domainLookupStart           = berfClient.domainLookupStart           
-            domainLookupEnd             = berfClient.domainLookupEnd             
-            connectStart                = berfClient.connectStart                
-            connectEnd                  = berfClient.connectEnd                  
-            secureConnectionStart       = berfClient.secureConnectionStart       
-            requestStart                = berfClient.requestStart                
-            responseStart               = berfClient.responseStart               
-            responseEnd                 = berfClient.responseEnd                 
-            domLoading                  = berfClient.domLoading                  
-            domInteractive              = berfClient.domInteractive              
-            domContentLoadedEventStart  = berfClient.domContentLoadedEventStart  
-            domContentLoadedEventEnd    = berfClient.domContentLoadedEventEnd    
-            domComplete                 = berfClient.domComplete                 
-            loadEventStart              = berfClient.loadEventStart              
-            loadEventEnd                = berfClient.loadEventEnd                
-            prerenderSwitch             = berfClient.prerenderSwitch             
-            redirectCount               = berfClient.redirectCount               
-            initiatorType               = berfClient.initiatorType               
-            name                        = berfClient.name                        
-            startTime                   = berfClient.startTime                   
-            duration                    = berfClient.duration                    
-            navigationStart             = berfClient.navigationStart             
-
-            userName                    = httpContext.User.Identity.Name
-            clientIP                    = httpContext.Request.UserHostAddress
-            userAgent                   = httpContext.Request.UserAgent
-            browser                     = httpContext.Request.Browser.Browser 
-            browserVersion              = httpContext.Request.Browser.Version 
-            hostMachineName             = httpContext.Server.MachineName 
-        }
 
     member this.Index (modelBerfClients  : BerfClient[]) =
 
@@ -80,11 +32,13 @@ type BerfController() =
             for berfClient in berfClients  do
                 try
                     // insert browser metrics
+                    // insertBerfClient berfClient |> ignore
                     insert berfClient |> ignore
                     ()
                 with exn -> 
                     let message = exn.Message
                     (*
+                    You may get 
                     Cannot open database "Berf" requested by the login. The login failed.
                     Login failed for user 'IIS APPPOOL\.NET v4.5'.
                     *)

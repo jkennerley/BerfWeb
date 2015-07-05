@@ -1,4 +1,4 @@
-
+/*
 --***********
 go 
 drop proc lsp_InsertBerfClient
@@ -140,4 +140,7 @@ from Idea  with (nolock)
 where Id = @Id									 
 end
 go 
-                    
+
+
+*/
+	                

@@ -61,7 +61,6 @@
     <Content Include="packages.config" />
     <Content Include="App.config" />
     <None Include="xutFDacIntegrateTest.ps1" />
-    <Compile Include="DEPRACATE_FDac.DataAccess.Idea.fs" />
     <Compile Include="DEPRACATE_FDac.DataAccess.BerfClient.fs" />
   </ItemGroup>
   <ItemGroup>

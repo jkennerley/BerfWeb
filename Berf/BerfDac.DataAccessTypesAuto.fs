@@ -1,6 +1,6 @@
 
 [<AutoOpen>]
-module Berf.DataAccess 
+module BerfDac.DataAccess 
 
 open FSharp.Data
 

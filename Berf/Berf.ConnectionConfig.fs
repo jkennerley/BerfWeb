@@ -1,5 +1,5 @@
 ﻿[<AutoOpen>]
-module Berf.DataAccessConfig
+module BerfDac.DataAccessConfig
 
 [<Literal>]
 let CnString = "name=Berf"

@@ -9,7 +9,7 @@ let getFileDropDirectory =
     let autoDropDirectory= @"C:\Users\John\Dropbox\cloudsource\BerfWeb\Berf"
     autoDropDirectory
 
-let getProjectNameSpace = "Berf"
+let getProjectNameSpace = "BerfDac"
 
 let getTablesWhiteList =
     // the tables we need crud for
@@ -27,7 +27,6 @@ let ``DataAccessConnectionString.CnString should do expected``() =
     test <@ actual.Length <> 0 @>
     // test <@ actual = "name=Berf" @>
     ()
-
 
 /// T_SQL FOR ALL
 [<Fact>]
@@ -76,7 +75,6 @@ open FSharp.Data
 """ 
                                     getProjectNameSpace
 
-
     let code =
         codeElelements 
         |> Seq.filter ( fun z -> z.Lang = codeFilter )
@@ -85,10 +83,6 @@ open FSharp.Data
 
     System.IO.File.WriteAllText (filePathName, code)
     ()
-
-
-
-
 
 /// F# DataAccessCrud
 [<Fact>]
@@ -106,7 +100,7 @@ let ``AutoGen F# FsCrud should do expected``() =
 
     let fileContentHeader = sprintf """
 [<AutoOpen>]
-module %s.DataAccessCrud 
+module %s.Crud 
 
 open FSharp.Data
 
@@ -115,14 +109,10 @@ open FSharp.Data
 
     let code =
         codeElelements 
-        |> Seq.filter ( fun z -> 
-        z.Lang = codeFilter )
+        |> Seq.filter ( fun z -> z.Lang = codeFilter )
         |> Seq.map( fun x -> x.Code)
         |> Seq.fold (fun acc x -> sprintf """%s%s""" acc x ) fileContentHeader   
 
-
     System.IO.File.WriteAllText (filePathName, code)
     ()
-
-
 

@@ -1,9 +1,12 @@
 ﻿[<AutoOpen>]
-module Berf.DataAccessRepo
+module BerfDac.Repo
 
+//(*
 type Repo = Repo with
+
     // insert
     static member (==>) (d:Repo , be:BerfClient ) = insertBerfClient be     
+
     //static member (==>) (d:Repo , be:YOUR_TABLE_NAME) = insertYOUR_TABLE_NAME be     
     //// update
     //static member (+=) (d:Repo , be:YOUR_TABLE_NAME ) = updateYOUR_TABLE_NAME be     
@@ -23,3 +26,4 @@ let inline insert       be = Repo ==>  be
 // let inline read         be = Repo <==  be
 // let inline readNoLock   be = Repo <=== be
 
+//*)

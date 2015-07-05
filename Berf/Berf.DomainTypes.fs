@@ -1,5 +1,5 @@
 ﻿[<AutoOpen>]
-module Berf.DomainTypes
+module BerfDac.DomainTypes
 
 open System
 

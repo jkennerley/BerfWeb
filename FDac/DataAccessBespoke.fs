@@ -3,6 +3,8 @@ module FDac.DataAccessBespoke
 
 open System
 
+
+
 //let insertBerfClient (be : BerfClient) =
 //    let cmd = new DataAccess.InsertBerfClient()
 //    cmd.Execute
