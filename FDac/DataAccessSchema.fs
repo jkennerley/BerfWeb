@@ -4,10 +4,10 @@ module FDac.DataAccessSchema
 open FSharp.Data
 
 [<Literal>]
-let SelectTablesSql = """SELECT * FROM midb.information_schema.tables"""
+let SelectTablesSql = """SELECT * FROM information_schema.tables"""
 
 [<Literal>]
-let SelectColumnsSql = """SELECT * FROM midb.INFORMATION_SCHEMA.COLUMNS """
+let SelectColumnsSql = """SELECT * FROM INFORMATION_SCHEMA.COLUMNS """
 
 [<Literal>]
 let SelectPrimaryKeySql = """

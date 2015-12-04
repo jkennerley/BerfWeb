@@ -23,7 +23,7 @@ e.g.
     <add name="midb" connectionString="Data Source=.\sqlserver2014;Initial Catalog=midb;..." providerName="System.Data.SqlClient" />
   </connectionStrings>
 
-:: Add DataAccessEnum.fs. Used for Enum configured from thhe database.
+:: Add DataAccessEnum.fs. Used for Enum configured from the database.
 
 :: Add DataAccessSchema.fs. 
 The types in here enable 'reflection' of types from your database, 
@@ -51,7 +51,7 @@ Add reference to Fsharp.Data.SqlClient
 Ad an app.config, and appropriate connection string.
 Add reference to System.Data
 
-AutoOpen the FDac.DomaiTypes and any modules you have for those types e.g. [<AutoOpen>] at the top of DominTypes.fs and BerfClient.fs
+AutoOpen the FDac.DomainTypes and any modules you have for those types e.g. [<AutoOpen>] at the top of DominTypes.fs and BerfClient.fs
 
 Install-Package unquote and add reference to that library
 
