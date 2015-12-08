@@ -585,9 +585,9 @@ create proc %s%s
 as
 begin
 	if ( select count(*) from %s with (nolock) where %s ) > 0 
-		exec lsp_UpdateIdeaKeyword %s 
+		exec lsp_Update%s %s 
 	else
-		exec lsp_InsertIdeaKeyword %s
+		exec lsp_Insert%s %s
 end
 go 
                     """ 
@@ -601,7 +601,9 @@ go
 
                     (tableMeta.Table.TableName)
                     where
+                    (tableMeta.Table.TableName)
                     fieldsListStringWithAt   
+                    (tableMeta.Table.TableName)
                     fieldsListStringWithAt   
 
 

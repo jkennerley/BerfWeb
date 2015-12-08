@@ -32,7 +32,6 @@ type BerfController() =
             for berfClient in berfClients  do
                 try
                     // insert browser metrics
-                    // insertBerfClient berfClient |> ignore
                     insert berfClient |> ignore
                     ()
                 with exn -> 

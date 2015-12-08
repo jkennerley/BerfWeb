@@ -1,25 +1,46 @@
 ﻿module BerfDac.UnitTest 
 
+open System.Configuration
 open FDac
 open Xunit
 open Swensen.Unquote
 
-let getFileDropDirectory = 
-    // hard code the place where the auto files will be written to
-    let autoDropDirectory= @"C:\Users\John\Dropbox\cloudsource\BerfWeb\Berf"
-    autoDropDirectory
+(*
+=======================
+Config
+*)
+let getAppConfig () = 
+    { BerfDac.IntegrationTest.DomainTypes.FileDropDirectory = ConfigurationManager.AppSettings.["FileDropDirectory"] }
 
+// refactor : to config
 let getProjectNameSpace = "BerfDac"
 
+// refactor : to config
 let getTablesWhiteList =
     // the tables we need crud for
     [ yield "BerfClient"]
     // [ yield "BerfClient"; yield "BerfMvc"]
 
+(*
+=======================
+Tests Helpers
+*)
+
+let getFileDropDirectory = 
+    let appConfig = getAppConfig()
+    let autoDropDirectory = appConfig.FileDropDirectory 
+    autoDropDirectory
+
 let getCodeElements = 
     let whiteList = getTablesWhiteList 
     let codeElelements = getTableMetaCodeElementsForWhiteList whiteList 
     codeElelements
+
+(*
+=======================
+Tests that kickout Crud and SQL files
+*)
+
 
 [<Fact>]
 let ``DataAccessConnectionString.CnString should do expected``() =
