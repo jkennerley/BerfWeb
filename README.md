@@ -8,12 +8,11 @@ Berf is a way of logging useful browser timing data available in modern browsers
 
 
 The Projects :-
+     - BerfWeb : An C# Asp.Net project that references Berf.dll. Berf.js in this project calls into BerfController.
+     - Berf : An F# library that contains the MVC BerfController. 
+     - FDac : Enables creation of automatic CRUD that sits on top of FSharp.Data.SqlClient. Used Berf project.
 
-     - BerfWeb : a C# asp.net project that referencing Berf.dll. It contains the JavaScript file Berf.js
-     - Berf : F# library that contains an MVC controller. 
-     - FDac : enables creation of automatic crud that sits on top of FSharp.Data.SqlClient.  Used by Berf.dll
-
-Recipe For using Berf :
+Recipe for setting up Berf:
 
 BerfWeb.dll is a simple out of the box visual studio project that exercises Berf.dll.
 Below are the changes made to a vanilla Visual Studio Asp.Net project that enables logging of browser timers to a database.
@@ -39,9 +38,9 @@ The Berf.dll crud code is really one insert into one table, but the Berf.dll con
 FDac was used to create the Berf.dll crud code.
 
 FDac is project aimed at the facilitating automatic kickout of F# and T-SQL that leverages FSharp.Data.SqlClient.
-You could use T4 templates, the Taligent free plugin, Linq-to-Sql, EntityFramework, and maybe even the SqlEntityConnection type provider, is now June 2015, exactly.
+You could use T4 templates, the Taligent free plugin, Linq-to-Sql, EntityFramework, and maybe even the SqlEntityConnection type provider, but it is now June 2015, exactly.
 
-Berf and FDac is a practical, useful demonstration of FSharp.Data.SqlClient type provider with a module layout as described by [Scott Wlaschin](http://fsharpforfunandprofit.com/posts/recipe-part3/).
+Berf and FDac are a practical, useful demonstration of FSharp.Data.SqlClient type provider with a module layout as described by [Scott Wlaschin](http://fsharpforfunandprofit.com/posts/recipe-part3/).
 
 You may like to use Deedle on the collected data to exercise those statistical skills.
 
