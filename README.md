@@ -46,3 +46,44 @@ You may like to use Deedle on the collected data to exercise those statistical s
 
 Thanks to Jack Sowter for the work on Berf.ts client side file.
 
+** Git Clone to new Machine
+This is a log of using the tool after git cloning ...
+git clone https://github.com/jkennerley/BerfWeb
+cd BerfWeb
+open the Visual Studio solution
+nuget packages will be downloaded
+You will be asked to enable type provider, FSharp.Data.SqlClient.dll
+You will be asked to enable type provider, FSharp.Data.dll
+Build the solution in Visual Studio, the will be errors.
+The type provider is using the project configs and the connection strings.
+
+**Build 
+You need to configure the connection strings for your machine, in the Berf solution projects.
+You need to create a sql server database.
+Look for BerfSchema.sql in the solution, create a new database, run the BerfSchema file.
+Ensure the project configs point to your database.
+Errors about database should have gone away, but you may have errors about missing stored procedures.
+Next, run the BerfDac.DataAccessAuto.sql.
+The build should succeed, the type providers to the configured database should not be complaining.
+
+** Tests
+Next, run some tests BerfDac.IntegrationTest.
+At this point open your test runner, 
+either [Visual Studio.Test.Window.Test Explorer] or NCrunch.
+Some BerfDac.IntegrationTest may be failing.
+Configure the App.config and the setting e.g.
+    <add key="FileDropDirectory" value="C:\Users\John\Dropbox\BerfWeb\Berf" />
+
+The test runners can now kickout auto files into C:\Users\John\Dropbox\BerfWeb\Berf
+  See any file post fixed with "Auto" e.g.
+    BerfDac.DataAccessAuto.sql
+    BerfDac.DataAccessTypesAuto.sql
+    BerfDac.DataAccessCrudAuto.sql
+
+The auto files contain crud code for data access. 
+If you have enabled NCrunch, all the auto crud will be kicked on compilation.
+Development  of the database, and syncing the crud should now be more fluid and 
+you are not tied to the erased type provider types.
+
+Review BerfDac.Repo for easy additions to the F# repo based on FSharp.Data.SqlClient
+

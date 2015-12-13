@@ -27,14 +27,23 @@ let deleteBerfClient (be : BerfClient) =
 let readBerfClient (be : BerfClient) =
     let cmd = new DataAccess.ReadBerfClient()
     let de = cmd.Execute (be.id)
-    match de with
-        | Some(x) -> Some { BerfDac.BerfClient.Zero with id = x.id } 
+    
+    let be = match de with
+        | Some(d) -> Some { BerfClient.Zero with id = d.id ; sessionId = d.sessionId ; renderId = d.renderId ; ord = d.ord ; url = d.url ; entryType = d.entryType ; source = d.source ; created = d.created ; unloadEventStart = d.unloadEventStart ; unloadEventEnd = d.unloadEventEnd ; linkNegotiationStart = d.linkNegotiationStart ; linkNegotiationEnd = d.linkNegotiationEnd ; redirectStart = d.redirectStart ; redirectEnd = d.redirectEnd ; fetchStart = d.fetchStart ; domainLookupStart = d.domainLookupStart ; domainLookupEnd = d.domainLookupEnd ; connectStart = d.connectStart ; connectEnd = d.connectEnd ; secureConnectionStart = d.secureConnectionStart ; requestStart = d.requestStart ; responseStart = d.responseStart ; responseEnd = d.responseEnd ; domLoading = d.domLoading ; domInteractive = d.domInteractive ; domContentLoadedEventStart = d.domContentLoadedEventStart ; domContentLoadedEventEnd = d.domContentLoadedEventEnd ; domComplete = d.domComplete ; loadEventStart = d.loadEventStart ; loadEventEnd = d.loadEventEnd ; prerenderSwitch = d.prerenderSwitch ; redirectCount = d.redirectCount ; initiatorType = d.initiatorType ; name = d.name ; startTime = d.startTime ; duration = d.duration ; navigationStart = d.navigationStart ; userName = d.userName ; clientIP = d.clientIP ; userAgent = d.userAgent ; browser = d.browser ; browserVersion = d.browserVersion ; hostMachineName = d.hostMachineName  } 
         | _ -> None
                         
+    be
+                        
 ///
-let readBerfClientWithNoLock (be : BerfClient) =
+let readBerfClientNoLock (be : BerfClient) =
     let cmd = new DataAccess.ReadBerfClientWithNoLock()
-    cmd.Execute (be.id)
+    let de = cmd.Execute (be.id)
+    
+    let be = match de with
+        | Some(d) -> Some { BerfClient.Zero with id = d.id ; sessionId = d.sessionId ; renderId = d.renderId ; ord = d.ord ; url = d.url ; entryType = d.entryType ; source = d.source ; created = d.created ; unloadEventStart = d.unloadEventStart ; unloadEventEnd = d.unloadEventEnd ; linkNegotiationStart = d.linkNegotiationStart ; linkNegotiationEnd = d.linkNegotiationEnd ; redirectStart = d.redirectStart ; redirectEnd = d.redirectEnd ; fetchStart = d.fetchStart ; domainLookupStart = d.domainLookupStart ; domainLookupEnd = d.domainLookupEnd ; connectStart = d.connectStart ; connectEnd = d.connectEnd ; secureConnectionStart = d.secureConnectionStart ; requestStart = d.requestStart ; responseStart = d.responseStart ; responseEnd = d.responseEnd ; domLoading = d.domLoading ; domInteractive = d.domInteractive ; domContentLoadedEventStart = d.domContentLoadedEventStart ; domContentLoadedEventEnd = d.domContentLoadedEventEnd ; domComplete = d.domComplete ; loadEventStart = d.loadEventStart ; loadEventEnd = d.loadEventEnd ; prerenderSwitch = d.prerenderSwitch ; redirectCount = d.redirectCount ; initiatorType = d.initiatorType ; name = d.name ; startTime = d.startTime ; duration = d.duration ; navigationStart = d.navigationStart ; userName = d.userName ; clientIP = d.clientIP ; userAgent = d.userAgent ; browser = d.browser ; browserVersion = d.browserVersion ; hostMachineName = d.hostMachineName  } 
+        | _ -> None
+                        
+    be
                         
 ///
 let upsertBerfClient (be : BerfClient) =

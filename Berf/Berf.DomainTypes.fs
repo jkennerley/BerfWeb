@@ -12,7 +12,7 @@ type BerfClient =
       url : string
       entryType : string
       source : string
-      created : DateTime
+      created : string
       unloadEventStart : float
       unloadEventEnd : float
       linkNegotiationStart : float
@@ -45,6 +45,6 @@ type BerfClient =
       userName : string
       clientIP : string
       userAgent : string
-      browser : string
-      browserVersion : string
+      browser : string 
+      browserVersion : string 
       hostMachineName : string }

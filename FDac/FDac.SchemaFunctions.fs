@@ -162,6 +162,14 @@ let getFieldsListStringWithPrePost tableMeta =
         |> toSeparated "be." ","
 
 /// 
+let getToBe tableMeta pre post mid=
+    tableMeta.Cols
+        |> Seq.where (fun x -> x.TableName = tableMeta.Table.TableName )
+        |> Seq.map (fun x -> sprintf "%s = %s%s" x.ColumnName mid x.ColumnName ) 
+        |> Seq.toList
+        |> toSeparated pre post 
+
+/// 
 let getPkeyFieldsListStringWithPrePost tableMeta =
     tableMeta.Pkeys
         |> Seq.where (fun x -> x.TableName = tableMeta.Table.TableName )
@@ -317,33 +325,63 @@ let delete%s (be : %s) =
 
 ///
 let getReadCrudFSharp tableMeta  = 
+    let fieldsList = getToBe tableMeta "" " ; " "d."
+    let de2Be = sprintf 
+                        """
+    let be = match de with
+        | Some(d) -> Some { %s.Zero with %s  } 
+        | _ -> None
+                        """ 
+                        (tableMeta.Table.TableName)  
+                        fieldsList 
+
     let code = sprintf 
+    
                         """
 ///
 let read%s (be : %s) =
     let cmd = new DataAccess.Read%s()
-    cmd.Execute (%s)
+    let de = cmd.Execute (%s)
+    %s
+    be
                         """ 
                         (tableMeta.Table.TableName)  
                         (tableMeta.Table.TableName)  
                         (tableMeta.Table.TableName)  
                         (getPkeyFieldsListStringWithPrePost tableMeta)
+                        de2Be 
     { Lang = FSHARP_CRUD ; Type = LANG_ELEMENT_INSERT ; Code = code }
 
 ///
 let getReadWithNoLockCrudFSharp tableMeta  = 
+
+    let fieldsList = getToBe tableMeta "" " ; " "d."
+    let de2Be = sprintf 
+                        """
+    let be = match de with
+        | Some(d) -> Some { %s.Zero with %s  } 
+        | _ -> None
+                        """ 
+                        (tableMeta.Table.TableName)  
+                        fieldsList 
+
     let code = sprintf 
                         """
 ///
-let read%sWithNoLock (be : %s) =
+let read%sNoLock (be : %s) =
     let cmd = new DataAccess.Read%sWithNoLock()
-    cmd.Execute (%s)
+    let de = cmd.Execute (%s)
+    %s
+    be
                         """ 
                         (tableMeta.Table.TableName)  
                         (tableMeta.Table.TableName)  
                         (tableMeta.Table.TableName)  
                         (getPkeyFieldsListStringWithPrePost tableMeta)
+                        de2Be 
     { Lang = FSHARP_CRUD ; Type = LANG_ELEMENT_INSERT ; Code = code }
+
+
 
 
 ///

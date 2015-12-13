@@ -60,9 +60,9 @@
     <Content Include="App.config" />
     <Content Include="packages.config" />
     <Compile Include="BerfDac.DomainModel.fs" />
-    <Compile Include="BerfKickoutDac.IntegrationTest.fs" />
-    <Compile Include="DEPRACATE_FDac.DataAccess.BerfClient.fs" />
-    <None Include="xutFDacIntegrateTest.ps1" />
+    <Compile Include="BerfDacKickout.IntegrationTest.fs" />
+    <Compile Include="BerfDac.DataAccess.BerfClient.fs" />
+    <None Include="xutBerfDacIntegrateTest.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Data.SqlClient">

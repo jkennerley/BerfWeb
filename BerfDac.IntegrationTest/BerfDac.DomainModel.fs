@@ -1,8 +1,8 @@
 ﻿namespace BerfDac.IntegrationTest
 
 [<AutoOpen>]
-module DomainTypes =
-    open System.Net
-
-    type AppConfig =
-        { FileDropDirectory : string }
+module DomainTypes = 
+    type AppConfig = 
+        { FileDropDirectory : string
+          ProjectNameSpace : string
+          TablesWhiteList : string }

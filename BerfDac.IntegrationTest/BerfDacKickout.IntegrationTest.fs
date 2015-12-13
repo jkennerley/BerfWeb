@@ -1,36 +1,36 @@
-﻿module BerfDac.UnitTest 
+﻿module BerfDac.IntegrationTest.BerfDacKickout
 
 open System.Configuration
 open FDac
 open Xunit
 open Swensen.Unquote
 
-(*
-=======================
-Config
-*)
+// get app config
 let getAppConfig () = 
-    { BerfDac.IntegrationTest.DomainTypes.FileDropDirectory = ConfigurationManager.AppSettings.["FileDropDirectory"] }
+    { 
+        BerfDac.IntegrationTest.DomainTypes.FileDropDirectory = ConfigurationManager.AppSettings.["FileDropDirectory"] 
+        ProjectNameSpace = ConfigurationManager.AppSettings.["ProjectNameSpace"] 
+        TablesWhiteList  = ConfigurationManager.AppSettings.["TablesWhiteList"]
+    }
 
-// refactor : to config
-let getProjectNameSpace = "BerfDac"
-
-// refactor : to config
+// get configured list of tables to get auto crud
 let getTablesWhiteList =
-    // the tables we need crud for
-    [ yield "BerfClient"]
-    // [ yield "BerfClient"; yield "BerfMvc"]
+    getAppConfig()
+        .TablesWhiteList
+        .Split(';')
+        |> Seq.toList
 
-(*
-=======================
-Tests Helpers
-*)
-
+// the directory where auto-crud files will be dropped
 let getFileDropDirectory = 
     let appConfig = getAppConfig()
-    let autoDropDirectory = appConfig.FileDropDirectory 
-    autoDropDirectory
+    appConfig.FileDropDirectory 
 
+// namespace for the auto crud
+let getProjectNameSpace  = 
+    let appConfig = getAppConfig()
+    appConfig.ProjectNameSpace
+
+//
 let getCodeElements = 
     let whiteList = getTablesWhiteList 
     let codeElelements = getTableMetaCodeElementsForWhiteList whiteList 
