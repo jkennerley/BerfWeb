@@ -57,12 +57,12 @@
     <Error Condition="!Exists('..\packages\xunit.core.2.0.0\build\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.0.0\build\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS\xunit.core.props'))" />
   </Target>
   <ItemGroup>
+    <Content Include="App.config" />
+    <Content Include="packages.config" />
     <Compile Include="BerfDac.DomainModel.fs" />
     <Compile Include="BerfKickoutDac.IntegrationTest.fs" />
-    <Content Include="packages.config" />
-    <Content Include="App.config" />
-    <None Include="xutFDacIntegrateTest.ps1" />
     <Compile Include="DEPRACATE_FDac.DataAccess.BerfClient.fs" />
+    <None Include="xutFDacIntegrateTest.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Data.SqlClient">
@@ -93,6 +93,11 @@
       <HintPath>..\packages\xunit.extensibility.core.2.0.0\lib\portable-net45+win+wpa81+wp80+monotouch+monoandroid+Xamarin.iOS\xunit.core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <ProjectReference Include="..\Berf\Berf.fsproj">
+      <Name>Berf</Name>
+      <Project>{18701ba8-3d3d-4ce5-95ff-9fdf998dad98}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\FDac\FDac.fsproj">
       <Name>FDac</Name>
       <Project>{d7439c8e-05a1-4387-a896-bf74f4fcfdab}</Project>

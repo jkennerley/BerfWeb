@@ -26,7 +26,10 @@ let deleteBerfClient (be : BerfClient) =
 ///
 let readBerfClient (be : BerfClient) =
     let cmd = new DataAccess.ReadBerfClient()
-    cmd.Execute (be.id)
+    let de = cmd.Execute (be.id)
+    match de with
+        | Some(x) -> Some { BerfDac.BerfClient.Zero with id = x.id } 
+        | _ -> None
                         
 ///
 let readBerfClientWithNoLock (be : BerfClient) =

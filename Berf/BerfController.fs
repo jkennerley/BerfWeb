@@ -23,7 +23,7 @@ type BerfController() =
 
         if modelBerfClients <> null then
 
-            // map the metrics to include the http context items
+            // map the metrics to include the HTTP context items
             let berfClients = 
                 modelBerfClients  
                 |> Seq.mapi (fun i berfClient -> createBerfClient berfClient i sessionId renderId HttpContext.Current )
