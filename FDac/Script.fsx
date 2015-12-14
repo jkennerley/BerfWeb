@@ -1,6 +1,4 @@
-﻿// open FDac
-
-(*
+﻿(*
 This is a recipe for setting up, progressing with FDac
 
 :: Start a new data access project e.g. FDac.dll 
@@ -39,7 +37,6 @@ The content of this will be auto generated, depending on your database schema.
 
 :: The FDac project should now compile.
 
-
 :: Start a new Project FDac.IntegrationTest.dll
 
 Install-Package XUnit
@@ -54,7 +51,5 @@ Add reference to System.Data
 AutoOpen the FDac.DomainTypes and any modules you have for those types e.g. [<AutoOpen>] at the top of DominTypes.fs and BerfClient.fs
 
 Install-Package unquote and add reference to that library
-
-
 
 *)

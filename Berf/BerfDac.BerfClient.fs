@@ -4,7 +4,6 @@ module BerfDac.BerfClient
 open System
 open System.Web
 
-///
 let Zero =
     { BerfClient.id = Guid.NewGuid()
       sessionId = Guid.Empty
@@ -13,7 +12,6 @@ let Zero =
       url = String.Empty
       entryType = String.Empty
       source = String.Empty
-      (*created = DateTime.UtcNow.ToString("yyyy-MM-ddTHH\:mm\:ss.fffffffzzz")*)
       created = DateTime.UtcNow.ToString("yyyy-MM-ddTHH\:mm\:ss")
       unloadEventStart = 0.
       unloadEventEnd = 0.
@@ -51,7 +49,6 @@ let Zero =
       browserVersion = String.Empty
       hostMachineName = String.Empty }
 
-///
 let createBerfClient berfClient ord sessionId renderId (httpContext : HttpContext) =
     { BerfClient.id = Guid.NewGuid()
       sessionId = sessionId

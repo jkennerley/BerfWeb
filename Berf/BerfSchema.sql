@@ -1,10 +1,8 @@
 --****************************
 /*  
---
 create database BerfDb;
 go 
 
---
 use BerfDb ; 
 */
 go 
@@ -20,8 +18,6 @@ GO
 
 -- add user to database role 
 EXEC sp_addrolemember N'db_owner', N'berfUser'
-
-
 go 
 
 --****************************
@@ -69,7 +65,7 @@ create table [dbo].[BerfClient](
 	[duration]							[float] not null default(0.000001),
 	[navigationStart]					[float] not null default(0.000001),
 	[userName]							[nvarchar](max) NOT NULL default(''),
-	[clientIP]							[nvarchar](39) NOT NULL default(''),
+	[clientIP]							[nvarchar](39)  NOT NULL default(''),
 	[userAgent]							[nvarchar](max) NOT NULL default(''),
 	[browser]							[nvarchar](max) NOT NULL default(''),
 	[browserVersion]					[nvarchar](max) NOT NULL default(''),
@@ -78,7 +74,6 @@ create table [dbo].[BerfClient](
 go 
 alter table BerfClient add constraint pkBerfClient_Id primary key nonclustered (Id);
 go 
-
 
 --****************************
 if exists (select * from INFORMATION_SCHEMA.TABLES where TABLE_NAME = 'BerfMvc' AND TABLE_SCHEMA = 'dbo')
@@ -112,34 +107,3 @@ create table [dbo].[BerfMvc](
 go 
 alter table BerfMvc add constraint pkBerfMvc_Id primary key nonclustered (Id);
 go 
-
-
-
-/*
---***********
-go 
-drop proc lsp_InsertBerfClient
-go 
-create proc lsp_InsertBerfClient  
-@id uniqueidentifier,@sessionId uniqueidentifier,@renderId uniqueidentifier,@ord int,@url [nvarchar](MAX),@entryType [nvarchar](MAX),@source [nvarchar](MAX),@created datetime,@unloadEventStart float,@unloadEventEnd float,@linkNegotiationStart float,@linkNegotiationEnd float,@redirectStart float,@redirectEnd float,@fetchStart float,@domainLookupStart float,@domainLookupEnd float,@connectStart float,@connectEnd float,@secureConnectionStart float,@requestStart float,@responseStart float,@responseEnd float,@domLoading float,@domInteractive float,@domContentLoadedEventStart float,@domContentLoadedEventEnd float,@domComplete float,@loadEventStart float,@loadEventEnd float,@prerenderSwitch float,@redirectCount int,@initiatorType [nvarchar](MAX),@name [nvarchar](MAX),@startTime float,@duration float,@navigationStart float,@userName [nvarchar](MAX),@clientIP [nvarchar](39),@userAgent [nvarchar](MAX),@browser [nvarchar](MAX),@browserVersion [nvarchar](MAX),@hostMachineName [nvarchar](MAX)
-as
-begin
-insert into BerfClient 
-( id,sessionId,renderId,ord,url,entryType,source,created,unloadEventStart,unloadEventEnd,linkNegotiationStart,linkNegotiationEnd,redirectStart,redirectEnd,fetchStart,domainLookupStart,domainLookupEnd,connectStart,connectEnd,secureConnectionStart,requestStart,responseStart,responseEnd,domLoading,domInteractive,domContentLoadedEventStart,domContentLoadedEventEnd,domComplete,loadEventStart,loadEventEnd,prerenderSwitch,redirectCount,initiatorType,name,startTime,duration,navigationStart,userName,clientIP,userAgent,browser,browserVersion,hostMachineName ) 
-values
-( @id,@sessionId,@renderId,@ord,@url,@entryType,@source,@created,@unloadEventStart,@unloadEventEnd,@linkNegotiationStart,@linkNegotiationEnd,@redirectStart,@redirectEnd,@fetchStart,@domainLookupStart,@domainLookupEnd,@connectStart,@connectEnd,@secureConnectionStart,@requestStart,@responseStart,@responseEnd,@domLoading,@domInteractive,@domContentLoadedEventStart,@domContentLoadedEventEnd,@domComplete,@loadEventStart,@loadEventEnd,@prerenderSwitch,@redirectCount,@initiatorType,@name,@startTime,@duration,@navigationStart,@userName,@clientIP,@userAgent,@browser,@browserVersion,@hostMachineName )
-end
-go 
-*/
-
-
---***********
--- truncate table BerfClient ;
---
--- select * from BerfClient; 
-
-
-                    
-
-
-

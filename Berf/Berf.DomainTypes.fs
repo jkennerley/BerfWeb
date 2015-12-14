@@ -4,7 +4,7 @@ module BerfDac.DomainTypes
 open System
 
 [<CLIMutable>]
-type BerfClient =
+type BerfClient = 
     { id : Guid
       sessionId : Guid
       renderId : Guid
@@ -45,6 +45,6 @@ type BerfClient =
       userName : string
       clientIP : string
       userAgent : string
-      browser : string 
-      browserVersion : string 
+      browser : string
+      browserVersion : string
       hostMachineName : string }

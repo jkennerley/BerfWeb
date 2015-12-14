@@ -5,7 +5,6 @@ open System.Web
 open System.Web.Mvc
 
 open BerfDac.DomainTypes
-open BerfDac.Crud
 open BerfDac.Repo
 open BerfDac.BerfClient
 

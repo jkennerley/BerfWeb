@@ -1,9 +1,9 @@
 ﻿module BerfDacIntegrationTest.Kickout
 
 open System.Configuration
-open FDac
 open Xunit
 open Swensen.Unquote
+open FDac
 open BerfDacIntegrationTest
 
 // get app config
@@ -37,11 +37,7 @@ let getCodeElements =
     let codeElelements = getTableMetaCodeElementsForWhiteList whiteList 
     codeElelements
 
-(*
-=======================
-Tests that kickout Crud and SQL files
-*)
-
+// 
 [<Fact>]
 [<Trait("category", "ConnectionSting")>]
 let ``DataAccessConnectionString.CnString should do expected``() =
@@ -50,6 +46,7 @@ let ``DataAccessConnectionString.CnString should do expected``() =
     // test <@ actual = "name=Berf" @>
     ()
 
+// 
 [<Fact>]
 [<Trait("category", "KickoutSqlFiles")>]
 let ``AutoGen T-SQL should do expected``() =
@@ -72,6 +69,7 @@ let ``AutoGen T-SQL should do expected``() =
     System.IO.File.WriteAllText (filePathName, code)
     ()
 
+// 
 [<Fact>]
 [<Trait("category", "KickoutFsTypes")>]
 let ``AutoGen F# AccessTypes should do expected``() =
@@ -85,7 +83,7 @@ let ``AutoGen F# AccessTypes should do expected``() =
    
     let codeElelements = getCodeElements 
 
-    // the header for the top of the fs file
+    // the header for the top of the F# file
     let fileContentHeader = sprintf """
 [<AutoOpen>]
 module %s.DataAccess 
@@ -104,6 +102,7 @@ open FSharp.Data
     System.IO.File.WriteAllText (filePathName, code)
     ()
 
+// 
 [<Fact>]
 [<Trait("category", "KickoutFsCrud")>]
 let ``AutoGen F# FsCrud should do expected``() =

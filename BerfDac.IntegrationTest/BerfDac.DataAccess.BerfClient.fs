@@ -1,19 +1,21 @@
 ﻿module BerfDacIntegrationTest.BerfClient
 
+open System 
 open Xunit
 open Swensen.Unquote
-open System 
 open BerfDac.Repo
 
-
+//
 let getTestableInsert () =
     { BerfDac.BerfClient.Zero  with id = Guid.NewGuid() ; source  = "IntegrationTest" }
 
+//
 let getTestableInserts n =
     let xs = seq { for i in n do yield { BerfDac.BerfClient.Zero  with id = Guid.NewGuid() ; source  = "IntegrationTest" } }
     xs |> Seq.toList
 
 
+//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``Repo insert should not except``() =
@@ -27,6 +29,7 @@ let ``Repo insert should not except``() =
     test <@ retInsert = 1 @>
     ()
 
+//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``delete should not except``() =
@@ -41,6 +44,7 @@ let ``delete should not except``() =
     test <@ retDelete = 1 @>
     ()
 
+//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``update should not except``() =
@@ -58,6 +62,7 @@ let ``update should not except``() =
     //test <@ retUpdated = 1 @>
     ()
 
+//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``read should not except``() =
@@ -122,6 +127,7 @@ let ``read should not except``() =
     //test <@ acBe.hostMachineName                  = insertableBe.hostMachineName                  @>
     ()
 
+//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``read with nolock should not except``() =
@@ -143,5 +149,4 @@ let ``read with nolock should not except``() =
     test <@ acBe = insertableBe @>
     ()
 
-//END
 
