@@ -11,14 +11,14 @@ let getTestableInsert () =
 
 //
 let getTestableInserts n =
-    let xs = seq { for i in n do yield { BerfDac.BerfClient.Zero  with id = Guid.NewGuid() ; source  = "IntegrationTest" } }
+    let xs = seq { for i in 1..n do yield { BerfDac.BerfClient.Zero  with id = Guid.NewGuid() ; source  = "IntegrationTest" } }
     xs |> Seq.toList
 
 
 //
 [<Fact>]
 [<Trait("category", "BerfClient")>]
-let ``Repo insert should not except``() =
+let ``insert should not except``() =
     // Arrange
     // a record to be inserted
     let be = { (getTestableInsert()) with source  = "ITG_IS_INSERTED_TEST_RECORD" }
@@ -148,5 +148,145 @@ let ``read with nolock should not except``() =
                     | _ -> BerfDac.BerfClient.Zero
     test <@ acBe = insertableBe @>
     ()
+
+[<Fact>]
+[<Trait("category", "performance test")>]
+let ``performance test insert 1000``() =
+    // Arrange
+    // a record to be inserted and then read back
+    let insertableBes = getTestableInserts 1000
+    let results = 
+        insertableBes
+        |> Seq.map( fun insertableBe -> insert insertableBe)
+        |> Seq.toList
+
+    // Assert
+    results
+    |> List.iter(fun insertedReturn -> Assert.Equal(1, insertedReturn ) )
+    ()
+
+
+[<Fact>]
+[<Trait("category", "performance test")>]
+let ``performance test insert and update 1000``() =
+    // Arrange
+    // a record to be inserted and then read back
+    let insertableBes = getTestableInserts 1000
+
+    let results = 
+        insertableBes
+        |> Seq.map( fun insertableBe -> insert insertableBe)
+        |> Seq.toList
+
+    let updateResults = 
+        insertableBes
+        |> Seq.map( fun be -> { be with source  = "ITG_UPDATED" } )
+        |> Seq.map( fun insertableBe -> update insertableBe)
+        |> Seq.toList
+
+    // Assert
+    // results |> List.iter(fun insertedReturn -> Assert.Equal(1, insertedReturn ) )
+    ()
+
+
+
+
+
+
+
+[<Fact>]
+[<Trait("category", "performance test")>]
+let ``performance test insert then delete 1000 records``() =
+    // Arrange
+    // a record to be inserted and then read back
+    let insertableBes = getTestableInserts 1000
+    let insertResults = 
+        insertableBes
+        |> Seq.map( fun insertableBe -> insert insertableBe)
+        |> Seq.toList
+
+    let deleteResults = 
+        insertableBes
+        |> Seq.map( fun insertableBe -> delete insertableBe)
+        |> Seq.toList
+    
+    // Assert
+    //results |> List.iter(fun insertedReturn -> Assert.Equal(1, insertedReturn ) )
+    ()
+
+// 
+[<Fact>]
+[<Trait("category", "performance test")>]
+let ``performance test read 1 record in 50,000 times from at least 1000 recs in the db``() =
+    // Arrange
+    // a record to be inserted and then read back
+    let insertableBes = getTestableInserts 1000
+
+    let results = 
+        insertableBes
+        |> Seq.map( fun insertableBe -> insert insertableBe)
+        |> Seq.toList
+
+    let insertedBe = ( List.nth insertableBes 0 )
+
+    // Assert
+    (*
+        For Lenovo Yoga2 Core i7  
+        :: 14s to read one record back in 50,000 times
+        :: 0.14s / 500 records         
+        :: .28ms/record ; 
+    *)
+    for i in 1..50000 do 
+        let actualBe = defaultArg (read insertedBe) BerfDac.BerfClient.Zero
+        Assert.Equal( insertedBe , actualBe )
+        ()
+    ()
+
+
+// 
+[<Fact>]
+[<Trait("category", "performance test")>]
+let ``performance test readNoLock 1 record in 50,000 times from at least 1000 recs in the db``() =
+    // Arrange
+    // a record to be inserted and then read back
+    let insertableBes = getTestableInserts 1000
+
+    let results = 
+        insertableBes
+        |> Seq.map( fun insertableBe -> insert insertableBe)
+        |> Seq.toList
+
+    let insertedBe = ( List.nth insertableBes 0 )
+
+    // Assert
+    (*
+        For Lenovo Yoga2 Core i7  
+        :: 14s to read one record back in 50,000 times
+        :: 0.14s / 500 records         
+        :: .28ms/record ; 
+    *)
+    for i in 1..50000 do 
+        let actualBe = defaultArg (readNoLock insertedBe) BerfDac.BerfClient.Zero
+        Assert.Equal( insertedBe , actualBe )
+        ()
+    ()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

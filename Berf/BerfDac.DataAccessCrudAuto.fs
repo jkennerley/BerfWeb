@@ -1,7 +1,9 @@
+
 [<AutoOpen>]
 module BerfDac.Crud 
 
-//open FSharp.Data
+open FSharp.Data
+
 
 ///
 let insertBerfClient (be : BerfClient) =
