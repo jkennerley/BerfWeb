@@ -1,14 +1,15 @@
-﻿module BerfDac.IntegrationTest.BerfDacKickout
+﻿module BerfDacIntegrationTest.Kickout
 
 open System.Configuration
 open FDac
 open Xunit
 open Swensen.Unquote
+open BerfDacIntegrationTest
 
 // get app config
 let getAppConfig () = 
     { 
-        BerfDac.IntegrationTest.DomainTypes.FileDropDirectory = ConfigurationManager.AppSettings.["FileDropDirectory"] 
+        DomainTypes.FileDropDirectory = ConfigurationManager.AppSettings.["FileDropDirectory"] 
         ProjectNameSpace = ConfigurationManager.AppSettings.["ProjectNameSpace"] 
         TablesWhiteList  = ConfigurationManager.AppSettings.["TablesWhiteList"]
     }
@@ -41,17 +42,16 @@ let getCodeElements =
 Tests that kickout Crud and SQL files
 *)
 
-
 [<Fact>]
+[<Trait("category", "ConnectionSting")>]
 let ``DataAccessConnectionString.CnString should do expected``() =
     let actual = DataAccessConfig.CnString
     test <@ actual.Length <> 0 @>
     // test <@ actual = "name=Berf" @>
     ()
 
-/// T_SQL FOR ALL
 [<Fact>]
-[<Trait("category", "AutoGenSql")>]
+[<Trait("category", "KickoutSqlFiles")>]
 let ``AutoGen T-SQL should do expected``() =
     // the file drop
     let fileName = sprintf "%s.DataAccessAuto.sql" getProjectNameSpace 
@@ -72,9 +72,8 @@ let ``AutoGen T-SQL should do expected``() =
     System.IO.File.WriteAllText (filePathName, code)
     ()
 
-/// F# Data Access Types
 [<Fact>]
-[<Trait("category", "DataAccessTypesFs")>]
+[<Trait("category", "KickoutFsTypes")>]
 let ``AutoGen F# AccessTypes should do expected``() =
     // the file drop
     let fileName = sprintf "%s.DataAccessTypesAuto.fs" getProjectNameSpace 
@@ -105,9 +104,8 @@ open FSharp.Data
     System.IO.File.WriteAllText (filePathName, code)
     ()
 
-/// F# DataAccessCrud
 [<Fact>]
-[<Trait("category", "DataAccessCrudFs")>]
+[<Trait("category", "KickoutFsCrud")>]
 let ``AutoGen F# FsCrud should do expected``() =
     // the file drop
     let fileName = sprintf "%s.DataAccessCrudAuto.fs" getProjectNameSpace 

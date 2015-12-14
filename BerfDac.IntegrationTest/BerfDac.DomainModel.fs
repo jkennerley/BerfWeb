@@ -1,4 +1,4 @@
-﻿namespace BerfDac.IntegrationTest
+﻿namespace BerfDacIntegrationTest
 
 [<AutoOpen>]
 module DomainTypes = 

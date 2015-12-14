@@ -1,6 +1,5 @@
-﻿module BerfDac.IntegrationTest.BerfClientIntegrationTest
+﻿module BerfDacIntegrationTest.BerfClient
 
-//open FDac
 open Xunit
 open Swensen.Unquote
 open System 
@@ -16,6 +15,7 @@ let getTestableInserts n =
 
 
 [<Fact>]
+[<Trait("category", "BerfClient")>]
 let ``Repo insert should not except``() =
     // Arrange
     // a record to be inserted
@@ -28,6 +28,7 @@ let ``Repo insert should not except``() =
     ()
 
 [<Fact>]
+[<Trait("category", "BerfClient")>]
 let ``delete should not except``() =
     // a record to be deleted 
     let be = { (getTestableInsert()) with source  = "ITG_IS_DELETABLE_TEST_RECORD" }
@@ -41,6 +42,7 @@ let ``delete should not except``() =
     ()
 
 [<Fact>]
+[<Trait("category", "BerfClient")>]
 let ``update should not except``() =
     // Arrange
     // a record to be updated 
@@ -57,6 +59,7 @@ let ``update should not except``() =
     ()
 
 [<Fact>]
+[<Trait("category", "BerfClient")>]
 let ``read should not except``() =
     // Arrange
     // a record to be inserted and then read back
@@ -120,6 +123,7 @@ let ``read should not except``() =
     ()
 
 [<Fact>]
+[<Trait("category", "BerfClient")>]
 let ``read with nolock should not except``() =
     // Arrange
     // a record to be inserted and then read back
