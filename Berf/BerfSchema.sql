@@ -18,6 +18,10 @@ GO
 
 -- add user to database role 
 EXEC sp_addrolemember N'db_owner', N'berfUser'
+
+
+EXEC sp_addrolemember N'db_owner', N'berfUser'
+exec sp_addrolemember N'db_owner', N'berfUser'
 go 
 
 --****************************

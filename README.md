@@ -46,14 +46,25 @@ You may like to use Deedle on the collected data to exercise those statistical s
 
 Thanks to Jack Sowter for the work on Berf.ts client side file.
 
-** Git Clone to new Machine
+
+
+
+** What to do when you Git Clone to new Machine
+
+After git cloning, you will need to setup for your specific box when you compile.
+Overall this involves, 
+  > compiling in Visual Studio, 
+  > allowing type providers, 
+  > configuring connection strings in the project configs and 
+  > running sql scripts to for schema and stored procs.
+
 This is a log of using the tool after git cloning ...
 git clone https://github.com/jkennerley/BerfWeb
 cd BerfWeb
 open the Visual Studio solution
 nuget packages will be downloaded
-You will be asked to enable type provider, FSharp.Data.SqlClient.dll
-You will be asked to enable type provider, FSharp.Data.dll
+You may be asked to enable type provider, FSharp.Data.SqlClient.dll
+You may be asked to enable type provider, FSharp.Data.dll
 Build the solution in Visual Studio, the will be errors.
 The type provider is using the project configs and the connection strings.
 
@@ -68,8 +79,15 @@ The build should succeed, the type providers to the configured database should n
 
 ** Tests
 Next, run some tests BerfDac.IntegrationTest.
-At this point open your test runner, 
-either [Visual Studio.Test.Window.Test Explorer] or NCrunch.
+At this point open your test runner, [Visual Studio.Test.Window.Test Explorer] 
+
+(Note about NCunch :: 
+After setting up the app configs, 
+and using NCrunch to run the tests may result in infinite loop. 
+Changing BerfDacIntegrationTest causes NCunch to run tests, 
+and that causes source code in Berf to change and that causes the BerfDacIntegration to change ...
+)
+
 Some BerfDac.IntegrationTest may be failing.
 Configure the App.config and the setting e.g.
     <add key="FileDropDirectory" value="C:\Users\John\Dropbox\BerfWeb\Berf" />
