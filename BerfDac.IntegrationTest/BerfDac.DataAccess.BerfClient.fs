@@ -1,21 +1,22 @@
 ﻿module BerfDacIntegrationTest.BerfClient
 
 open System 
+open Newtonsoft.Json 
 open Xunit
 open Swensen.Unquote
 open BerfDac.Repo
+open System.Reflection
+open System.Diagnostics
+open Helpers
+open System.IO
 
-//
 let getTestableInsert () =
     { BerfDac.BerfClient.Zero  with id = Guid.NewGuid() ; source  = "IntegrationTest" }
 
-//
 let getTestableInserts n =
     let xs = seq { for i in 1..n do yield { BerfDac.BerfClient.Zero  with id = Guid.NewGuid() ; source  = "IntegrationTest" } }
     xs |> Seq.toList
 
-
-//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``insert should not except``() =
@@ -29,7 +30,6 @@ let ``insert should not except``() =
     test <@ retInsert = 1 @>
     ()
 
-//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``delete should not except``() =
@@ -44,7 +44,6 @@ let ``delete should not except``() =
     test <@ retDelete = 1 @>
     ()
 
-//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``update should not except``() =
@@ -62,7 +61,6 @@ let ``update should not except``() =
     //test <@ retUpdated = 1 @>
     ()
 
-//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``read should not except``() =
@@ -127,7 +125,6 @@ let ``read should not except``() =
     //test <@ acBe.hostMachineName                  = insertableBe.hostMachineName                  @>
     ()
 
-//
 [<Fact>]
 [<Trait("category", "BerfClient")>]
 let ``read with nolock should not except``() =
@@ -149,12 +146,18 @@ let ``read with nolock should not except``() =
     test <@ acBe = insertableBe @>
     ()
 
-[<Fact>]
-[<Trait("category", "performance test")>]
-let ``performance test insert 1000``() =
+[<Trait("category", "PerfTest")>]
+[<Theory>]
+[<InlineData(1000)>]
+let ``Insert n records``(n) =
     // Arrange
+
+    // Act
+    let watch = Stopwatch()
+    watch.Start()
+
     // a record to be inserted and then read back
-    let insertableBes = getTestableInserts 1000
+    let insertableBes = getTestableInserts n
     let results = 
         insertableBes
         |> Seq.map( fun insertableBe -> insert insertableBe)
@@ -163,21 +166,39 @@ let ``performance test insert 1000``() =
     // Assert
     results
     |> List.iter(fun insertedReturn -> Assert.Equal(1, insertedReturn ) )
+
+    // Log stop watch
+    watch.Stop()
+    let timedItem  = {DomainTypes.TimedItemZero() with 
+                        Sig= thisFunctionName()  ; 
+                        SigId= "F#SD" ;
+                        Time= float(watch.ElapsedMilliseconds)
+                        Count = n}
+    ( saveTimedItem timedItem watch) |> ignore
+    
     ()
 
-
-[<Fact>]
-[<Trait("category", "performance test")>]
-let ``performance test insert and update 1000``() =
+[<Trait("category", "PerfTest")>]
+[<Theory>]
+[<InlineData(1000)>]
+let ``Update n``(n) =
     // Arrange
-    // a record to be inserted and then read back
-    let insertableBes = getTestableInserts 1000
 
+    // a record to be inserted and then read back
+    let insertableBes = getTestableInserts n
+
+    // Act
+
+    // start watch
+    let watch = Stopwatch()
+    watch.Start()
+    // insert
     let results = 
         insertableBes
         |> Seq.map( fun insertableBe -> insert insertableBe)
         |> Seq.toList
 
+    // update
     let updateResults = 
         insertableBes
         |> Seq.map( fun be -> { be with source  = "ITG_UPDATED" } )
@@ -186,25 +207,39 @@ let ``performance test insert and update 1000``() =
 
     // Assert
     // results |> List.iter(fun insertedReturn -> Assert.Equal(1, insertedReturn ) )
+
+    // Log stop watch
+    watch.Stop()
+    let timedItem  = {DomainTypes.TimedItemZero() with 
+                        Sig= thisFunctionName()  ; 
+                        SigId= "F#SD" ;
+                        Time= float(watch.ElapsedMilliseconds)
+                        Count = n}
+    ( saveTimedItem timedItem watch) |> ignore
+    
     ()
 
 
-
-
-
-
-
-[<Fact>]
-[<Trait("category", "performance test")>]
-let ``performance test insert then delete 1000 records``() =
-    // Arrange
+[<Trait("category", "PerfTest")>]
+[<Theory>]
+[<InlineData(1000)>]
+let ``Delete n records``(n) =
     // a record to be inserted and then read back
-    let insertableBes = getTestableInserts 1000
+    let insertableBes = getTestableInserts n
+
+    // Act
+
+    // start watch
+    let watch = Stopwatch()
+    watch.Start()
+
+    // insert
     let insertResults = 
         insertableBes
         |> Seq.map( fun insertableBe -> insert insertableBe)
         |> Seq.toList
 
+    // delete
     let deleteResults = 
         insertableBes
         |> Seq.map( fun insertableBe -> delete insertableBe)
@@ -212,16 +247,35 @@ let ``performance test insert then delete 1000 records``() =
     
     // Assert
     //results |> List.iter(fun insertedReturn -> Assert.Equal(1, insertedReturn ) )
+
+    // Log stop watch
+    watch.Stop()
+    let timedItem  = {DomainTypes.TimedItemZero() with 
+                        Sig= thisFunctionName()  ; 
+                        SigId= "F#SD" ;
+                        Time= float(watch.ElapsedMilliseconds)
+                        Count = n}
+    ( saveTimedItem timedItem watch) |> ignore
+    
     ()
 
-// 
-[<Fact>]
-[<Trait("category", "performance test")>]
-let ``performance test read 1 record in 50,000 times from at least 1000 recs in the db``() =
-    // Arrange
-    // a record to be inserted and then read back
-    let insertableBes = getTestableInserts 1000
 
+[<Trait("category", "PerfTest")>]
+[<Theory>]
+[<InlineData(1000)>]
+let ``Read n records``(n) =
+    // Arrange
+
+    // a record to be inserted and then read back
+    let insertableBes = getTestableInserts n
+
+    // Act
+
+    // start watch
+    let watch = Stopwatch()
+    watch.Start()
+
+    // insert
     let results = 
         insertableBes
         |> Seq.map( fun insertableBe -> insert insertableBe)
@@ -229,28 +283,40 @@ let ``performance test read 1 record in 50,000 times from at least 1000 recs in 
 
     let insertedBe = ( List.nth insertableBes 0 )
 
-    // Assert
-    (*
-        For Lenovo Yoga2 Core i7  
-        :: 14s to read one record back in 50,000 times
-        :: 0.14s / 500 records         
-        :: .28ms/record ; 
-    *)
-    for i in 1..50000 do 
+    //  read
+    for i in 1..n do 
         let actualBe = defaultArg (read insertedBe) BerfDac.BerfClient.Zero
-        Assert.Equal( insertedBe , actualBe )
+        //Assert.Equal( insertedBe , actualBe )
         ()
+
+    // Log stop watch
+    watch.Stop()
+    let timedItem  = {DomainTypes.TimedItemZero() with 
+                        Sig= thisFunctionName()  ; 
+                        SigId= "F#SD" ;
+                        Time= float(watch.ElapsedMilliseconds)
+                        Count = n}
+    ( saveTimedItem timedItem watch) |> ignore
+    
     ()
 
 
-// 
-[<Fact>]
-[<Trait("category", "performance test")>]
-let ``performance test readNoLock 1 record in 50,000 times from at least 1000 recs in the db``() =
+[<Trait("category", "PerfTest")>]
+[<Theory>]
+[<InlineData(1000)>]
+let ``ReadNoLock n records``(n) =
     // Arrange
-    // a record to be inserted and then read back
-    let insertableBes = getTestableInserts 1000
 
+    // a record to be inserted and then read back
+    let insertableBes = getTestableInserts n
+
+    // Act
+
+    // start watch
+    let watch = Stopwatch()
+    watch.Start()
+
+    // sut call
     let results = 
         insertableBes
         |> Seq.map( fun insertableBe -> insert insertableBe)
@@ -258,35 +324,20 @@ let ``performance test readNoLock 1 record in 50,000 times from at least 1000 re
 
     let insertedBe = ( List.nth insertableBes 0 )
 
-    // Assert
-    (*
-        For Lenovo Yoga2 Core i7  
-        :: 14s to read one record back in 50,000 times
-        :: 0.14s / 500 records         
-        :: .28ms/record ; 
-    *)
-    for i in 1..50000 do 
+    // read n times 
+    for i in 1..n do 
         let actualBe = defaultArg (readNoLock insertedBe) BerfDac.BerfClient.Zero
-        Assert.Equal( insertedBe , actualBe )
+        // Assert.Equal( insertedBe , actualBe )
         ()
+
+    // Log stop watch
+    watch.Stop()
+    let timedItem  = {DomainTypes.TimedItemZero() with 
+                        Sig= thisFunctionName()  ; 
+                        SigId= "F#SD" ;
+                        Time= float(watch.ElapsedMilliseconds)
+                        Count = n}
+    ( saveTimedItem timedItem watch) |> ignore
+    
     ()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

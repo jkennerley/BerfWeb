@@ -5,14 +5,7 @@ open Xunit
 open Swensen.Unquote
 open FDac
 open BerfDacIntegrationTest
-
-// get app config
-let getAppConfig () = 
-    { 
-        DomainTypes.FileDropDirectory = ConfigurationManager.AppSettings.["FileDropDirectory"] 
-        ProjectNameSpace = ConfigurationManager.AppSettings.["ProjectNameSpace"] 
-        TablesWhiteList  = ConfigurationManager.AppSettings.["TablesWhiteList"]
-    }
+open Helpers
 
 // get configured list of tables to get auto crud
 let getTablesWhiteList =
