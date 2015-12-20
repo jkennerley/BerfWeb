@@ -12,6 +12,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doco", "Doco", "{369AA361-8B43-4B2B-8AC2-1319A57D3A81}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		TestTimeLog.txt = TestTimeLog.txt
+		TestTimeLogsForTypeProvider.txt = TestTimeLogsForTypeProvider.txt
 	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FDac", "FDac\FDac.fsproj", "{D7439C8E-05A1-4387-A896-BF74F4FCFDAB}"
@@ -19,6 +21,8 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BerfDac.IntegrationTest", "BerfDac.IntegrationTest\BerfDac.IntegrationTest.fsproj", "{8F37EF99-9586-41F4-893D-665D3A1755A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BerfDacAltIntegrationTest", "BerfDacAltIntegrationTest\BerfDacAltIntegrationTest.csproj", "{1DAEED8E-B63E-4DDB-9328-FC3695644456}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BerfTally", "BerfTally\BerfTally.fsproj", "{D8A3BA5C-4491-44C3-ABC6-E57485D55196}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +54,10 @@ Global
 		{1DAEED8E-B63E-4DDB-9328-FC3695644456}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DAEED8E-B63E-4DDB-9328-FC3695644456}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DAEED8E-B63E-4DDB-9328-FC3695644456}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A3BA5C-4491-44C3-ABC6-E57485D55196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A3BA5C-4491-44C3-ABC6-E57485D55196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A3BA5C-4491-44C3-ABC6-E57485D55196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A3BA5C-4491-44C3-ABC6-E57485D55196}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
