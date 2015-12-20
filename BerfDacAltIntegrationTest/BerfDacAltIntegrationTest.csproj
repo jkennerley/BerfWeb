@@ -68,7 +68,7 @@
   <ItemGroup>
     <Compile Include="BerfDacAlt.IntegrationTest.cs" />
     <Compile Include="BerfDataEfContext\BerfClient.cs">
-      <DependentUpon>BerfDataEf.tt</DependentUpon>
+      <DependentUpon>BerfEf6DbContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="BerfDataEfContext\BerfDataEf.Context.cs">
       <AutoGen>True</AutoGen>
@@ -85,15 +85,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BerfDataEf.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BerfDataEfContext\BerfEf6DbContextGenerator.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BerfEf6DbContextGenerator.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BerfDataEfContext\BerfEf6DbContextGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BerfEf6DbContextGenerator.tt</DependentUpon>
+    </Compile>
     <Compile Include="BerfDataEfContext\BerfMvc.cs">
-      <DependentUpon>BerfDataEf.tt</DependentUpon>
+      <DependentUpon>BerfEf6DbContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="BerfDataEfContext\lsp_ReadBerfClientWithNoLock_Result.cs">
-      <DependentUpon>BerfDataEf.tt</DependentUpon>
+      <DependentUpon>BerfEf6DbContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="BerfDataEfContext\lsp_ReadBerfClient_Result.cs">
-      <DependentUpon>BerfDataEf.tt</DependentUpon>
+      <DependentUpon>BerfEf6DbContextGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Include="BerfData\BerfData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +130,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BerfDataEf.edmx</DependentUpon>
       <LastGenOutput>BerfDataEf.cs</LastGenOutput>
+    </Content>
+    <Content Include="BerfDataEfContext\BerfEf6DbContextGenerator.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BerfEf6DbContextGenerator.Context.cs</LastGenOutput>
+      <DependentUpon>BerfDataEf.edmx</DependentUpon>
+    </Content>
+    <Content Include="BerfDataEfContext\BerfEf6DbContextGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BerfEf6DbContextGenerator.cs</LastGenOutput>
+      <DependentUpon>BerfDataEf.edmx</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

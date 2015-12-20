@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cf38750076b14c0a8e851d1ed4742e60" Name="Diagram1">
+      <Diagram DiagramId="cf38750076b14c0a8e851d1ed4742e60" Name="Diagram1" ZoomLevel="59">
         <EntityTypeShape EntityType="BerfDbModel.BerfClient" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BerfDbModel.BerfMvc" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
