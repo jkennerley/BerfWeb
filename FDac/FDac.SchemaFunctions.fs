@@ -2,13 +2,24 @@
 module FDac.SchemaFunctions
 
 ///
-let getTables =
+let getTables' () =
     let cmd  = new FDac.DataAccessSchema.SelectTables()
 
     let xs = cmd.Execute()
         
     xs
     |> Seq.map (fun x -> {Table.TableName = x.TABLE_NAME; Catalog = (defaultToEmpty x.TABLE_CATALOG) } )
+
+///
+let getTables =
+    let tables = getTables'()
+    tables
+    //let cmd  = new FDac.DataAccessSchema.SelectTables()
+    //
+    //let xs = cmd.Execute()
+    //    
+    //xs
+    //|> Seq.map (fun x -> {Table.TableName = x.TABLE_NAME; Catalog = (defaultToEmpty x.TABLE_CATALOG) } )
 
 ///
 let getColumns =
@@ -725,8 +736,9 @@ let getLanguageElements tableMeta =
         }
 
 let getDbMetaForWhiteList (tableNamesWhiteList: string list) = 
+    let tables = getTables 
     let tables = 
-        getTables 
+        tables 
         |> Seq.where (fun x -> (tableNamesWhiteList |>  Seq.exists (fun y -> y = x.TableName) ))
         |> Seq.sortBy (fun x -> x.TableName  ) 
         |> Seq.toList

@@ -1,0 +1,11 @@
+
+{"Id":"574252b2-fc5f-4838-8ce5-cf37de374575","RunSigId":"","SigId":"F#SD","Sig":"Read n records","Time":740.0,"Count":1000,"EventDt":"2015-12-20T18:45:19","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"9ea7bc98-b16e-4a8e-9153-b8be58ce2e1c","RunSigId":"","SigId":"F#SD","Sig":"Delete n records","Time":770.0,"Count":1000,"EventDt":"2015-12-20T18:45:20","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"cd4bacd8-a524-459a-af25-7d7f63896e58","RunSigId":"","SigId":"F#SD","Sig":"ReadNoLock n records","Time":733.0,"Count":1000,"EventDt":"2015-12-20T18:45:21","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"f1b10793-4dca-41e8-b840-f554e047e57e","RunSigId":"","SigId":"F#SD","Sig":"Update n","Time":1018.0,"Count":1000,"EventDt":"2015-12-20T18:45:22","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"06b54442-3ed8-423b-b385-2e6265d3aa53","RunSigId":"","SigId":"F#SD","Sig":"Insert n records","Time":603.0,"Count":1000,"EventDt":"2015-12-20T18:45:23","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"c17d07f6-a90a-4685-a671-903ac40d101f","RunSigId":"","SigId":"F#SD","Sig":"Read n records","Time":765.0,"Count":1000,"EventDt":"2015-12-20T18:45:40","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"5962693c-6aae-4707-ad98-1f27c64afc5c","RunSigId":"","SigId":"F#SD","Sig":"Delete n records","Time":810.0,"Count":1000,"EventDt":"2015-12-20T18:45:41","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"b99cb8b1-9de2-4685-a6c1-92375b44298d","RunSigId":"","SigId":"F#SD","Sig":"ReadNoLock n records","Time":767.0,"Count":1000,"EventDt":"2015-12-20T18:45:42","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"1e8c3c3f-8a19-4c13-b11f-061ba42739db","RunSigId":"","SigId":"F#SD","Sig":"Update n","Time":1064.0,"Count":1000,"EventDt":"2015-12-20T18:45:43","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"eaedf6e7-6865-4068-aba4-28b904840224","RunSigId":"","SigId":"F#SD","Sig":"Insert n records","Time":660.0,"Count":1000,"EventDt":"2015-12-20T18:45:43","ClientSig":"","ClientSigVer":"","Server":"LPC"}
