@@ -1,0 +1,751 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BerfDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BerfClient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="renderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ord" Type="int" Nullable="false" />
+          <Property Name="url" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="entryType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="source" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="created" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="unloadEventStart" Type="float" Nullable="false" />
+          <Property Name="unloadEventEnd" Type="float" Nullable="false" />
+          <Property Name="linkNegotiationStart" Type="float" Nullable="false" />
+          <Property Name="linkNegotiationEnd" Type="float" Nullable="false" />
+          <Property Name="redirectStart" Type="float" Nullable="false" />
+          <Property Name="redirectEnd" Type="float" Nullable="false" />
+          <Property Name="fetchStart" Type="float" Nullable="false" />
+          <Property Name="domainLookupStart" Type="float" Nullable="false" />
+          <Property Name="domainLookupEnd" Type="float" Nullable="false" />
+          <Property Name="connectStart" Type="float" Nullable="false" />
+          <Property Name="connectEnd" Type="float" Nullable="false" />
+          <Property Name="secureConnectionStart" Type="float" Nullable="false" />
+          <Property Name="requestStart" Type="float" Nullable="false" />
+          <Property Name="responseStart" Type="float" Nullable="false" />
+          <Property Name="responseEnd" Type="float" Nullable="false" />
+          <Property Name="domLoading" Type="float" Nullable="false" />
+          <Property Name="domInteractive" Type="float" Nullable="false" />
+          <Property Name="domContentLoadedEventStart" Type="float" Nullable="false" />
+          <Property Name="domContentLoadedEventEnd" Type="float" Nullable="false" />
+          <Property Name="domComplete" Type="float" Nullable="false" />
+          <Property Name="loadEventStart" Type="float" Nullable="false" />
+          <Property Name="loadEventEnd" Type="float" Nullable="false" />
+          <Property Name="prerenderSwitch" Type="float" Nullable="false" />
+          <Property Name="redirectCount" Type="int" Nullable="false" />
+          <Property Name="initiatorType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="startTime" Type="float" Nullable="false" />
+          <Property Name="duration" Type="float" Nullable="false" />
+          <Property Name="navigationStart" Type="float" Nullable="false" />
+          <Property Name="userName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="clientIP" Type="nvarchar" MaxLength="39" Nullable="false" />
+          <Property Name="userAgent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="browser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="browserVersion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hostMachineName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BerfMvc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="renderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sessionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="action" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="controller" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="area" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="actionStart" Type="datetime" Nullable="false" />
+          <Property Name="actionEnd" Type="datetime" Nullable="false" />
+          <Property Name="resultStart" Type="datetime" Nullable="false" />
+          <Property Name="resultEnd" Type="datetime" Nullable="false" />
+          <Property Name="actionDuration" Type="float" Nullable="false" />
+          <Property Name="resultDuration" Type="float" Nullable="false" />
+          <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="clientIP" Type="nvarchar" MaxLength="39" Nullable="false" />
+          <Property Name="userName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="userAgent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="browser" Type="nvarchar(max)" />
+          <Property Name="browserVersion" Type="nvarchar(max)" />
+          <Property Name="hostMachineName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="headers" Type="nvarchar(max)" />
+        </EntityType>
+        <Function Name="lsp_DeleteBerfClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="lsp_InsertBerfClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="sessionId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="renderId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ord" Type="int" Mode="In" />
+          <Parameter Name="url" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="entryType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="source" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="created" Type="nvarchar" Mode="In" />
+          <Parameter Name="unloadEventStart" Type="float" Mode="In" />
+          <Parameter Name="unloadEventEnd" Type="float" Mode="In" />
+          <Parameter Name="linkNegotiationStart" Type="float" Mode="In" />
+          <Parameter Name="linkNegotiationEnd" Type="float" Mode="In" />
+          <Parameter Name="redirectStart" Type="float" Mode="In" />
+          <Parameter Name="redirectEnd" Type="float" Mode="In" />
+          <Parameter Name="fetchStart" Type="float" Mode="In" />
+          <Parameter Name="domainLookupStart" Type="float" Mode="In" />
+          <Parameter Name="domainLookupEnd" Type="float" Mode="In" />
+          <Parameter Name="connectStart" Type="float" Mode="In" />
+          <Parameter Name="connectEnd" Type="float" Mode="In" />
+          <Parameter Name="secureConnectionStart" Type="float" Mode="In" />
+          <Parameter Name="requestStart" Type="float" Mode="In" />
+          <Parameter Name="responseStart" Type="float" Mode="In" />
+          <Parameter Name="responseEnd" Type="float" Mode="In" />
+          <Parameter Name="domLoading" Type="float" Mode="In" />
+          <Parameter Name="domInteractive" Type="float" Mode="In" />
+          <Parameter Name="domContentLoadedEventStart" Type="float" Mode="In" />
+          <Parameter Name="domContentLoadedEventEnd" Type="float" Mode="In" />
+          <Parameter Name="domComplete" Type="float" Mode="In" />
+          <Parameter Name="loadEventStart" Type="float" Mode="In" />
+          <Parameter Name="loadEventEnd" Type="float" Mode="In" />
+          <Parameter Name="prerenderSwitch" Type="float" Mode="In" />
+          <Parameter Name="redirectCount" Type="int" Mode="In" />
+          <Parameter Name="initiatorType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="startTime" Type="float" Mode="In" />
+          <Parameter Name="duration" Type="float" Mode="In" />
+          <Parameter Name="navigationStart" Type="float" Mode="In" />
+          <Parameter Name="userName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="clientIP" Type="nvarchar" Mode="In" />
+          <Parameter Name="userAgent" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="browser" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="browserVersion" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="hostMachineName" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="lsp_ReadBerfClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="lsp_ReadBerfClientWithNoLock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="lsp_UpdateBerfClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="sessionId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="renderId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ord" Type="int" Mode="In" />
+          <Parameter Name="url" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="entryType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="source" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="created" Type="nvarchar" Mode="In" />
+          <Parameter Name="unloadEventStart" Type="float" Mode="In" />
+          <Parameter Name="unloadEventEnd" Type="float" Mode="In" />
+          <Parameter Name="linkNegotiationStart" Type="float" Mode="In" />
+          <Parameter Name="linkNegotiationEnd" Type="float" Mode="In" />
+          <Parameter Name="redirectStart" Type="float" Mode="In" />
+          <Parameter Name="redirectEnd" Type="float" Mode="In" />
+          <Parameter Name="fetchStart" Type="float" Mode="In" />
+          <Parameter Name="domainLookupStart" Type="float" Mode="In" />
+          <Parameter Name="domainLookupEnd" Type="float" Mode="In" />
+          <Parameter Name="connectStart" Type="float" Mode="In" />
+          <Parameter Name="connectEnd" Type="float" Mode="In" />
+          <Parameter Name="secureConnectionStart" Type="float" Mode="In" />
+          <Parameter Name="requestStart" Type="float" Mode="In" />
+          <Parameter Name="responseStart" Type="float" Mode="In" />
+          <Parameter Name="responseEnd" Type="float" Mode="In" />
+          <Parameter Name="domLoading" Type="float" Mode="In" />
+          <Parameter Name="domInteractive" Type="float" Mode="In" />
+          <Parameter Name="domContentLoadedEventStart" Type="float" Mode="In" />
+          <Parameter Name="domContentLoadedEventEnd" Type="float" Mode="In" />
+          <Parameter Name="domComplete" Type="float" Mode="In" />
+          <Parameter Name="loadEventStart" Type="float" Mode="In" />
+          <Parameter Name="loadEventEnd" Type="float" Mode="In" />
+          <Parameter Name="prerenderSwitch" Type="float" Mode="In" />
+          <Parameter Name="redirectCount" Type="int" Mode="In" />
+          <Parameter Name="initiatorType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="startTime" Type="float" Mode="In" />
+          <Parameter Name="duration" Type="float" Mode="In" />
+          <Parameter Name="navigationStart" Type="float" Mode="In" />
+          <Parameter Name="userName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="clientIP" Type="nvarchar" Mode="In" />
+          <Parameter Name="userAgent" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="browser" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="browserVersion" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="hostMachineName" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="lsp_UpsertBerfClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="sessionId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="renderId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ord" Type="int" Mode="In" />
+          <Parameter Name="url" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="entryType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="source" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="created" Type="nvarchar" Mode="In" />
+          <Parameter Name="unloadEventStart" Type="float" Mode="In" />
+          <Parameter Name="unloadEventEnd" Type="float" Mode="In" />
+          <Parameter Name="linkNegotiationStart" Type="float" Mode="In" />
+          <Parameter Name="linkNegotiationEnd" Type="float" Mode="In" />
+          <Parameter Name="redirectStart" Type="float" Mode="In" />
+          <Parameter Name="redirectEnd" Type="float" Mode="In" />
+          <Parameter Name="fetchStart" Type="float" Mode="In" />
+          <Parameter Name="domainLookupStart" Type="float" Mode="In" />
+          <Parameter Name="domainLookupEnd" Type="float" Mode="In" />
+          <Parameter Name="connectStart" Type="float" Mode="In" />
+          <Parameter Name="connectEnd" Type="float" Mode="In" />
+          <Parameter Name="secureConnectionStart" Type="float" Mode="In" />
+          <Parameter Name="requestStart" Type="float" Mode="In" />
+          <Parameter Name="responseStart" Type="float" Mode="In" />
+          <Parameter Name="responseEnd" Type="float" Mode="In" />
+          <Parameter Name="domLoading" Type="float" Mode="In" />
+          <Parameter Name="domInteractive" Type="float" Mode="In" />
+          <Parameter Name="domContentLoadedEventStart" Type="float" Mode="In" />
+          <Parameter Name="domContentLoadedEventEnd" Type="float" Mode="In" />
+          <Parameter Name="domComplete" Type="float" Mode="In" />
+          <Parameter Name="loadEventStart" Type="float" Mode="In" />
+          <Parameter Name="loadEventEnd" Type="float" Mode="In" />
+          <Parameter Name="prerenderSwitch" Type="float" Mode="In" />
+          <Parameter Name="redirectCount" Type="int" Mode="In" />
+          <Parameter Name="initiatorType" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="name" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="startTime" Type="float" Mode="In" />
+          <Parameter Name="duration" Type="float" Mode="In" />
+          <Parameter Name="navigationStart" Type="float" Mode="In" />
+          <Parameter Name="userName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="clientIP" Type="nvarchar" Mode="In" />
+          <Parameter Name="userAgent" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="browser" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="browserVersion" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="hostMachineName" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="BerfDbModelStoreContainer">
+          <EntitySet Name="BerfClient" EntityType="Self.BerfClient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BerfMvc" EntityType="Self.BerfMvc" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BerfDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BerfClient">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="sessionId" Type="Guid" Nullable="false" />
+          <Property Name="renderId" Type="Guid" Nullable="false" />
+          <Property Name="ord" Type="Int32" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="entryType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="unloadEventStart" Type="Double" Nullable="false" />
+          <Property Name="unloadEventEnd" Type="Double" Nullable="false" />
+          <Property Name="linkNegotiationStart" Type="Double" Nullable="false" />
+          <Property Name="linkNegotiationEnd" Type="Double" Nullable="false" />
+          <Property Name="redirectStart" Type="Double" Nullable="false" />
+          <Property Name="redirectEnd" Type="Double" Nullable="false" />
+          <Property Name="fetchStart" Type="Double" Nullable="false" />
+          <Property Name="domainLookupStart" Type="Double" Nullable="false" />
+          <Property Name="domainLookupEnd" Type="Double" Nullable="false" />
+          <Property Name="connectStart" Type="Double" Nullable="false" />
+          <Property Name="connectEnd" Type="Double" Nullable="false" />
+          <Property Name="secureConnectionStart" Type="Double" Nullable="false" />
+          <Property Name="requestStart" Type="Double" Nullable="false" />
+          <Property Name="responseStart" Type="Double" Nullable="false" />
+          <Property Name="responseEnd" Type="Double" Nullable="false" />
+          <Property Name="domLoading" Type="Double" Nullable="false" />
+          <Property Name="domInteractive" Type="Double" Nullable="false" />
+          <Property Name="domContentLoadedEventStart" Type="Double" Nullable="false" />
+          <Property Name="domContentLoadedEventEnd" Type="Double" Nullable="false" />
+          <Property Name="domComplete" Type="Double" Nullable="false" />
+          <Property Name="loadEventStart" Type="Double" Nullable="false" />
+          <Property Name="loadEventEnd" Type="Double" Nullable="false" />
+          <Property Name="prerenderSwitch" Type="Double" Nullable="false" />
+          <Property Name="redirectCount" Type="Int32" Nullable="false" />
+          <Property Name="initiatorType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="startTime" Type="Double" Nullable="false" />
+          <Property Name="duration" Type="Double" Nullable="false" />
+          <Property Name="navigationStart" Type="Double" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="clientIP" Type="String" MaxLength="39" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userAgent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="browser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="browserVersion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hostMachineName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BerfMvc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="renderId" Type="Guid" Nullable="false" />
+          <Property Name="sessionId" Type="Guid" Nullable="false" />
+          <Property Name="action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="controller" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="actionStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="actionEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="resultStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="resultEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="actionDuration" Type="Double" Nullable="false" />
+          <Property Name="resultDuration" Type="Double" Nullable="false" />
+          <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="clientIP" Type="String" MaxLength="39" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userAgent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="browser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="browserVersion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hostMachineName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="headers" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="BerfDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BerfClients" EntityType="Self.BerfClient" />
+          <EntitySet Name="BerfMvcs" EntityType="Self.BerfMvc" />
+          <FunctionImport Name="lsp_DeleteBerfClient">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="lsp_InsertBerfClient">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="sessionId" Mode="In" Type="Guid" />
+            <Parameter Name="renderId" Mode="In" Type="Guid" />
+            <Parameter Name="ord" Mode="In" Type="Int32" />
+            <Parameter Name="url" Mode="In" Type="String" />
+            <Parameter Name="entryType" Mode="In" Type="String" />
+            <Parameter Name="source" Mode="In" Type="String" />
+            <Parameter Name="created" Mode="In" Type="String" />
+            <Parameter Name="unloadEventStart" Mode="In" Type="Double" />
+            <Parameter Name="unloadEventEnd" Mode="In" Type="Double" />
+            <Parameter Name="linkNegotiationStart" Mode="In" Type="Double" />
+            <Parameter Name="linkNegotiationEnd" Mode="In" Type="Double" />
+            <Parameter Name="redirectStart" Mode="In" Type="Double" />
+            <Parameter Name="redirectEnd" Mode="In" Type="Double" />
+            <Parameter Name="fetchStart" Mode="In" Type="Double" />
+            <Parameter Name="domainLookupStart" Mode="In" Type="Double" />
+            <Parameter Name="domainLookupEnd" Mode="In" Type="Double" />
+            <Parameter Name="connectStart" Mode="In" Type="Double" />
+            <Parameter Name="connectEnd" Mode="In" Type="Double" />
+            <Parameter Name="secureConnectionStart" Mode="In" Type="Double" />
+            <Parameter Name="requestStart" Mode="In" Type="Double" />
+            <Parameter Name="responseStart" Mode="In" Type="Double" />
+            <Parameter Name="responseEnd" Mode="In" Type="Double" />
+            <Parameter Name="domLoading" Mode="In" Type="Double" />
+            <Parameter Name="domInteractive" Mode="In" Type="Double" />
+            <Parameter Name="domContentLoadedEventStart" Mode="In" Type="Double" />
+            <Parameter Name="domContentLoadedEventEnd" Mode="In" Type="Double" />
+            <Parameter Name="domComplete" Mode="In" Type="Double" />
+            <Parameter Name="loadEventStart" Mode="In" Type="Double" />
+            <Parameter Name="loadEventEnd" Mode="In" Type="Double" />
+            <Parameter Name="prerenderSwitch" Mode="In" Type="Double" />
+            <Parameter Name="redirectCount" Mode="In" Type="Int32" />
+            <Parameter Name="initiatorType" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="startTime" Mode="In" Type="Double" />
+            <Parameter Name="duration" Mode="In" Type="Double" />
+            <Parameter Name="navigationStart" Mode="In" Type="Double" />
+            <Parameter Name="userName" Mode="In" Type="String" />
+            <Parameter Name="clientIP" Mode="In" Type="String" />
+            <Parameter Name="userAgent" Mode="In" Type="String" />
+            <Parameter Name="browser" Mode="In" Type="String" />
+            <Parameter Name="browserVersion" Mode="In" Type="String" />
+            <Parameter Name="hostMachineName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="lsp_ReadBerfClient" ReturnType="Collection(BerfDbModel.lsp_ReadBerfClient_Result)">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="lsp_ReadBerfClientWithNoLock" ReturnType="Collection(BerfDbModel.lsp_ReadBerfClientWithNoLock_Result)">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="lsp_UpdateBerfClient">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="sessionId" Mode="In" Type="Guid" />
+            <Parameter Name="renderId" Mode="In" Type="Guid" />
+            <Parameter Name="ord" Mode="In" Type="Int32" />
+            <Parameter Name="url" Mode="In" Type="String" />
+            <Parameter Name="entryType" Mode="In" Type="String" />
+            <Parameter Name="source" Mode="In" Type="String" />
+            <Parameter Name="created" Mode="In" Type="String" />
+            <Parameter Name="unloadEventStart" Mode="In" Type="Double" />
+            <Parameter Name="unloadEventEnd" Mode="In" Type="Double" />
+            <Parameter Name="linkNegotiationStart" Mode="In" Type="Double" />
+            <Parameter Name="linkNegotiationEnd" Mode="In" Type="Double" />
+            <Parameter Name="redirectStart" Mode="In" Type="Double" />
+            <Parameter Name="redirectEnd" Mode="In" Type="Double" />
+            <Parameter Name="fetchStart" Mode="In" Type="Double" />
+            <Parameter Name="domainLookupStart" Mode="In" Type="Double" />
+            <Parameter Name="domainLookupEnd" Mode="In" Type="Double" />
+            <Parameter Name="connectStart" Mode="In" Type="Double" />
+            <Parameter Name="connectEnd" Mode="In" Type="Double" />
+            <Parameter Name="secureConnectionStart" Mode="In" Type="Double" />
+            <Parameter Name="requestStart" Mode="In" Type="Double" />
+            <Parameter Name="responseStart" Mode="In" Type="Double" />
+            <Parameter Name="responseEnd" Mode="In" Type="Double" />
+            <Parameter Name="domLoading" Mode="In" Type="Double" />
+            <Parameter Name="domInteractive" Mode="In" Type="Double" />
+            <Parameter Name="domContentLoadedEventStart" Mode="In" Type="Double" />
+            <Parameter Name="domContentLoadedEventEnd" Mode="In" Type="Double" />
+            <Parameter Name="domComplete" Mode="In" Type="Double" />
+            <Parameter Name="loadEventStart" Mode="In" Type="Double" />
+            <Parameter Name="loadEventEnd" Mode="In" Type="Double" />
+            <Parameter Name="prerenderSwitch" Mode="In" Type="Double" />
+            <Parameter Name="redirectCount" Mode="In" Type="Int32" />
+            <Parameter Name="initiatorType" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="startTime" Mode="In" Type="Double" />
+            <Parameter Name="duration" Mode="In" Type="Double" />
+            <Parameter Name="navigationStart" Mode="In" Type="Double" />
+            <Parameter Name="userName" Mode="In" Type="String" />
+            <Parameter Name="clientIP" Mode="In" Type="String" />
+            <Parameter Name="userAgent" Mode="In" Type="String" />
+            <Parameter Name="browser" Mode="In" Type="String" />
+            <Parameter Name="browserVersion" Mode="In" Type="String" />
+            <Parameter Name="hostMachineName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="lsp_UpsertBerfClient">
+            <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="sessionId" Mode="In" Type="Guid" />
+            <Parameter Name="renderId" Mode="In" Type="Guid" />
+            <Parameter Name="ord" Mode="In" Type="Int32" />
+            <Parameter Name="url" Mode="In" Type="String" />
+            <Parameter Name="entryType" Mode="In" Type="String" />
+            <Parameter Name="source" Mode="In" Type="String" />
+            <Parameter Name="created" Mode="In" Type="String" />
+            <Parameter Name="unloadEventStart" Mode="In" Type="Double" />
+            <Parameter Name="unloadEventEnd" Mode="In" Type="Double" />
+            <Parameter Name="linkNegotiationStart" Mode="In" Type="Double" />
+            <Parameter Name="linkNegotiationEnd" Mode="In" Type="Double" />
+            <Parameter Name="redirectStart" Mode="In" Type="Double" />
+            <Parameter Name="redirectEnd" Mode="In" Type="Double" />
+            <Parameter Name="fetchStart" Mode="In" Type="Double" />
+            <Parameter Name="domainLookupStart" Mode="In" Type="Double" />
+            <Parameter Name="domainLookupEnd" Mode="In" Type="Double" />
+            <Parameter Name="connectStart" Mode="In" Type="Double" />
+            <Parameter Name="connectEnd" Mode="In" Type="Double" />
+            <Parameter Name="secureConnectionStart" Mode="In" Type="Double" />
+            <Parameter Name="requestStart" Mode="In" Type="Double" />
+            <Parameter Name="responseStart" Mode="In" Type="Double" />
+            <Parameter Name="responseEnd" Mode="In" Type="Double" />
+            <Parameter Name="domLoading" Mode="In" Type="Double" />
+            <Parameter Name="domInteractive" Mode="In" Type="Double" />
+            <Parameter Name="domContentLoadedEventStart" Mode="In" Type="Double" />
+            <Parameter Name="domContentLoadedEventEnd" Mode="In" Type="Double" />
+            <Parameter Name="domComplete" Mode="In" Type="Double" />
+            <Parameter Name="loadEventStart" Mode="In" Type="Double" />
+            <Parameter Name="loadEventEnd" Mode="In" Type="Double" />
+            <Parameter Name="prerenderSwitch" Mode="In" Type="Double" />
+            <Parameter Name="redirectCount" Mode="In" Type="Int32" />
+            <Parameter Name="initiatorType" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="startTime" Mode="In" Type="Double" />
+            <Parameter Name="duration" Mode="In" Type="Double" />
+            <Parameter Name="navigationStart" Mode="In" Type="Double" />
+            <Parameter Name="userName" Mode="In" Type="String" />
+            <Parameter Name="clientIP" Mode="In" Type="String" />
+            <Parameter Name="userAgent" Mode="In" Type="String" />
+            <Parameter Name="browser" Mode="In" Type="String" />
+            <Parameter Name="browserVersion" Mode="In" Type="String" />
+            <Parameter Name="hostMachineName" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="lsp_ReadBerfClient_Result">
+          <Property Type="Guid" Name="id" Nullable="false" />
+          <Property Type="Guid" Name="sessionId" Nullable="false" />
+          <Property Type="Guid" Name="renderId" Nullable="false" />
+          <Property Type="Int32" Name="ord" Nullable="false" />
+          <Property Type="String" Name="url" Nullable="false" />
+          <Property Type="String" Name="entryType" Nullable="false" />
+          <Property Type="String" Name="source" Nullable="false" />
+          <Property Type="String" Name="created" Nullable="false" MaxLength="40" />
+          <Property Type="Double" Name="unloadEventStart" Nullable="false" />
+          <Property Type="Double" Name="unloadEventEnd" Nullable="false" />
+          <Property Type="Double" Name="linkNegotiationStart" Nullable="false" />
+          <Property Type="Double" Name="linkNegotiationEnd" Nullable="false" />
+          <Property Type="Double" Name="redirectStart" Nullable="false" />
+          <Property Type="Double" Name="redirectEnd" Nullable="false" />
+          <Property Type="Double" Name="fetchStart" Nullable="false" />
+          <Property Type="Double" Name="domainLookupStart" Nullable="false" />
+          <Property Type="Double" Name="domainLookupEnd" Nullable="false" />
+          <Property Type="Double" Name="connectStart" Nullable="false" />
+          <Property Type="Double" Name="connectEnd" Nullable="false" />
+          <Property Type="Double" Name="secureConnectionStart" Nullable="false" />
+          <Property Type="Double" Name="requestStart" Nullable="false" />
+          <Property Type="Double" Name="responseStart" Nullable="false" />
+          <Property Type="Double" Name="responseEnd" Nullable="false" />
+          <Property Type="Double" Name="domLoading" Nullable="false" />
+          <Property Type="Double" Name="domInteractive" Nullable="false" />
+          <Property Type="Double" Name="domContentLoadedEventStart" Nullable="false" />
+          <Property Type="Double" Name="domContentLoadedEventEnd" Nullable="false" />
+          <Property Type="Double" Name="domComplete" Nullable="false" />
+          <Property Type="Double" Name="loadEventStart" Nullable="false" />
+          <Property Type="Double" Name="loadEventEnd" Nullable="false" />
+          <Property Type="Double" Name="prerenderSwitch" Nullable="false" />
+          <Property Type="Int32" Name="redirectCount" Nullable="false" />
+          <Property Type="String" Name="initiatorType" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="Double" Name="startTime" Nullable="false" />
+          <Property Type="Double" Name="duration" Nullable="false" />
+          <Property Type="Double" Name="navigationStart" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="false" />
+          <Property Type="String" Name="clientIP" Nullable="false" MaxLength="39" />
+          <Property Type="String" Name="userAgent" Nullable="false" />
+          <Property Type="String" Name="browser" Nullable="false" />
+          <Property Type="String" Name="browserVersion" Nullable="false" />
+          <Property Type="String" Name="hostMachineName" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="lsp_ReadBerfClientWithNoLock_Result">
+          <Property Type="Guid" Name="id" Nullable="false" />
+          <Property Type="Guid" Name="sessionId" Nullable="false" />
+          <Property Type="Guid" Name="renderId" Nullable="false" />
+          <Property Type="Int32" Name="ord" Nullable="false" />
+          <Property Type="String" Name="url" Nullable="false" />
+          <Property Type="String" Name="entryType" Nullable="false" />
+          <Property Type="String" Name="source" Nullable="false" />
+          <Property Type="String" Name="created" Nullable="false" MaxLength="40" />
+          <Property Type="Double" Name="unloadEventStart" Nullable="false" />
+          <Property Type="Double" Name="unloadEventEnd" Nullable="false" />
+          <Property Type="Double" Name="linkNegotiationStart" Nullable="false" />
+          <Property Type="Double" Name="linkNegotiationEnd" Nullable="false" />
+          <Property Type="Double" Name="redirectStart" Nullable="false" />
+          <Property Type="Double" Name="redirectEnd" Nullable="false" />
+          <Property Type="Double" Name="fetchStart" Nullable="false" />
+          <Property Type="Double" Name="domainLookupStart" Nullable="false" />
+          <Property Type="Double" Name="domainLookupEnd" Nullable="false" />
+          <Property Type="Double" Name="connectStart" Nullable="false" />
+          <Property Type="Double" Name="connectEnd" Nullable="false" />
+          <Property Type="Double" Name="secureConnectionStart" Nullable="false" />
+          <Property Type="Double" Name="requestStart" Nullable="false" />
+          <Property Type="Double" Name="responseStart" Nullable="false" />
+          <Property Type="Double" Name="responseEnd" Nullable="false" />
+          <Property Type="Double" Name="domLoading" Nullable="false" />
+          <Property Type="Double" Name="domInteractive" Nullable="false" />
+          <Property Type="Double" Name="domContentLoadedEventStart" Nullable="false" />
+          <Property Type="Double" Name="domContentLoadedEventEnd" Nullable="false" />
+          <Property Type="Double" Name="domComplete" Nullable="false" />
+          <Property Type="Double" Name="loadEventStart" Nullable="false" />
+          <Property Type="Double" Name="loadEventEnd" Nullable="false" />
+          <Property Type="Double" Name="prerenderSwitch" Nullable="false" />
+          <Property Type="Int32" Name="redirectCount" Nullable="false" />
+          <Property Type="String" Name="initiatorType" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" />
+          <Property Type="Double" Name="startTime" Nullable="false" />
+          <Property Type="Double" Name="duration" Nullable="false" />
+          <Property Type="Double" Name="navigationStart" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="false" />
+          <Property Type="String" Name="clientIP" Nullable="false" MaxLength="39" />
+          <Property Type="String" Name="userAgent" Nullable="false" />
+          <Property Type="String" Name="browser" Nullable="false" />
+          <Property Type="String" Name="browserVersion" Nullable="false" />
+          <Property Type="String" Name="hostMachineName" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BerfDbModelStoreContainer" CdmEntityContainer="BerfDbEntities">
+          <EntitySetMapping Name="BerfClients">
+            <EntityTypeMapping TypeName="BerfDbModel.BerfClient">
+              <MappingFragment StoreEntitySet="BerfClient">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+                <ScalarProperty Name="renderId" ColumnName="renderId" />
+                <ScalarProperty Name="ord" ColumnName="ord" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="entryType" ColumnName="entryType" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="unloadEventStart" ColumnName="unloadEventStart" />
+                <ScalarProperty Name="unloadEventEnd" ColumnName="unloadEventEnd" />
+                <ScalarProperty Name="linkNegotiationStart" ColumnName="linkNegotiationStart" />
+                <ScalarProperty Name="linkNegotiationEnd" ColumnName="linkNegotiationEnd" />
+                <ScalarProperty Name="redirectStart" ColumnName="redirectStart" />
+                <ScalarProperty Name="redirectEnd" ColumnName="redirectEnd" />
+                <ScalarProperty Name="fetchStart" ColumnName="fetchStart" />
+                <ScalarProperty Name="domainLookupStart" ColumnName="domainLookupStart" />
+                <ScalarProperty Name="domainLookupEnd" ColumnName="domainLookupEnd" />
+                <ScalarProperty Name="connectStart" ColumnName="connectStart" />
+                <ScalarProperty Name="connectEnd" ColumnName="connectEnd" />
+                <ScalarProperty Name="secureConnectionStart" ColumnName="secureConnectionStart" />
+                <ScalarProperty Name="requestStart" ColumnName="requestStart" />
+                <ScalarProperty Name="responseStart" ColumnName="responseStart" />
+                <ScalarProperty Name="responseEnd" ColumnName="responseEnd" />
+                <ScalarProperty Name="domLoading" ColumnName="domLoading" />
+                <ScalarProperty Name="domInteractive" ColumnName="domInteractive" />
+                <ScalarProperty Name="domContentLoadedEventStart" ColumnName="domContentLoadedEventStart" />
+                <ScalarProperty Name="domContentLoadedEventEnd" ColumnName="domContentLoadedEventEnd" />
+                <ScalarProperty Name="domComplete" ColumnName="domComplete" />
+                <ScalarProperty Name="loadEventStart" ColumnName="loadEventStart" />
+                <ScalarProperty Name="loadEventEnd" ColumnName="loadEventEnd" />
+                <ScalarProperty Name="prerenderSwitch" ColumnName="prerenderSwitch" />
+                <ScalarProperty Name="redirectCount" ColumnName="redirectCount" />
+                <ScalarProperty Name="initiatorType" ColumnName="initiatorType" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="navigationStart" ColumnName="navigationStart" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="clientIP" ColumnName="clientIP" />
+                <ScalarProperty Name="userAgent" ColumnName="userAgent" />
+                <ScalarProperty Name="browser" ColumnName="browser" />
+                <ScalarProperty Name="browserVersion" ColumnName="browserVersion" />
+                <ScalarProperty Name="hostMachineName" ColumnName="hostMachineName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BerfMvcs">
+            <EntityTypeMapping TypeName="BerfDbModel.BerfMvc">
+              <MappingFragment StoreEntitySet="BerfMvc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="renderId" ColumnName="renderId" />
+                <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="controller" ColumnName="controller" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="actionStart" ColumnName="actionStart" />
+                <ScalarProperty Name="actionEnd" ColumnName="actionEnd" />
+                <ScalarProperty Name="resultStart" ColumnName="resultStart" />
+                <ScalarProperty Name="resultEnd" ColumnName="resultEnd" />
+                <ScalarProperty Name="actionDuration" ColumnName="actionDuration" />
+                <ScalarProperty Name="resultDuration" ColumnName="resultDuration" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="clientIP" ColumnName="clientIP" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userAgent" ColumnName="userAgent" />
+                <ScalarProperty Name="browser" ColumnName="browser" />
+                <ScalarProperty Name="browserVersion" ColumnName="browserVersion" />
+                <ScalarProperty Name="hostMachineName" ColumnName="hostMachineName" />
+                <ScalarProperty Name="headers" ColumnName="headers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="lsp_DeleteBerfClient" FunctionName="BerfDbModel.Store.lsp_DeleteBerfClient" />
+          <FunctionImportMapping FunctionImportName="lsp_InsertBerfClient" FunctionName="BerfDbModel.Store.lsp_InsertBerfClient" />
+          <FunctionImportMapping FunctionImportName="lsp_ReadBerfClient" FunctionName="BerfDbModel.Store.lsp_ReadBerfClient">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BerfDbModel.lsp_ReadBerfClient_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+                <ScalarProperty Name="renderId" ColumnName="renderId" />
+                <ScalarProperty Name="ord" ColumnName="ord" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="entryType" ColumnName="entryType" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="unloadEventStart" ColumnName="unloadEventStart" />
+                <ScalarProperty Name="unloadEventEnd" ColumnName="unloadEventEnd" />
+                <ScalarProperty Name="linkNegotiationStart" ColumnName="linkNegotiationStart" />
+                <ScalarProperty Name="linkNegotiationEnd" ColumnName="linkNegotiationEnd" />
+                <ScalarProperty Name="redirectStart" ColumnName="redirectStart" />
+                <ScalarProperty Name="redirectEnd" ColumnName="redirectEnd" />
+                <ScalarProperty Name="fetchStart" ColumnName="fetchStart" />
+                <ScalarProperty Name="domainLookupStart" ColumnName="domainLookupStart" />
+                <ScalarProperty Name="domainLookupEnd" ColumnName="domainLookupEnd" />
+                <ScalarProperty Name="connectStart" ColumnName="connectStart" />
+                <ScalarProperty Name="connectEnd" ColumnName="connectEnd" />
+                <ScalarProperty Name="secureConnectionStart" ColumnName="secureConnectionStart" />
+                <ScalarProperty Name="requestStart" ColumnName="requestStart" />
+                <ScalarProperty Name="responseStart" ColumnName="responseStart" />
+                <ScalarProperty Name="responseEnd" ColumnName="responseEnd" />
+                <ScalarProperty Name="domLoading" ColumnName="domLoading" />
+                <ScalarProperty Name="domInteractive" ColumnName="domInteractive" />
+                <ScalarProperty Name="domContentLoadedEventStart" ColumnName="domContentLoadedEventStart" />
+                <ScalarProperty Name="domContentLoadedEventEnd" ColumnName="domContentLoadedEventEnd" />
+                <ScalarProperty Name="domComplete" ColumnName="domComplete" />
+                <ScalarProperty Name="loadEventStart" ColumnName="loadEventStart" />
+                <ScalarProperty Name="loadEventEnd" ColumnName="loadEventEnd" />
+                <ScalarProperty Name="prerenderSwitch" ColumnName="prerenderSwitch" />
+                <ScalarProperty Name="redirectCount" ColumnName="redirectCount" />
+                <ScalarProperty Name="initiatorType" ColumnName="initiatorType" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="navigationStart" ColumnName="navigationStart" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="clientIP" ColumnName="clientIP" />
+                <ScalarProperty Name="userAgent" ColumnName="userAgent" />
+                <ScalarProperty Name="browser" ColumnName="browser" />
+                <ScalarProperty Name="browserVersion" ColumnName="browserVersion" />
+                <ScalarProperty Name="hostMachineName" ColumnName="hostMachineName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="lsp_ReadBerfClientWithNoLock" FunctionName="BerfDbModel.Store.lsp_ReadBerfClientWithNoLock">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BerfDbModel.lsp_ReadBerfClientWithNoLock_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+                <ScalarProperty Name="renderId" ColumnName="renderId" />
+                <ScalarProperty Name="ord" ColumnName="ord" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="entryType" ColumnName="entryType" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="unloadEventStart" ColumnName="unloadEventStart" />
+                <ScalarProperty Name="unloadEventEnd" ColumnName="unloadEventEnd" />
+                <ScalarProperty Name="linkNegotiationStart" ColumnName="linkNegotiationStart" />
+                <ScalarProperty Name="linkNegotiationEnd" ColumnName="linkNegotiationEnd" />
+                <ScalarProperty Name="redirectStart" ColumnName="redirectStart" />
+                <ScalarProperty Name="redirectEnd" ColumnName="redirectEnd" />
+                <ScalarProperty Name="fetchStart" ColumnName="fetchStart" />
+                <ScalarProperty Name="domainLookupStart" ColumnName="domainLookupStart" />
+                <ScalarProperty Name="domainLookupEnd" ColumnName="domainLookupEnd" />
+                <ScalarProperty Name="connectStart" ColumnName="connectStart" />
+                <ScalarProperty Name="connectEnd" ColumnName="connectEnd" />
+                <ScalarProperty Name="secureConnectionStart" ColumnName="secureConnectionStart" />
+                <ScalarProperty Name="requestStart" ColumnName="requestStart" />
+                <ScalarProperty Name="responseStart" ColumnName="responseStart" />
+                <ScalarProperty Name="responseEnd" ColumnName="responseEnd" />
+                <ScalarProperty Name="domLoading" ColumnName="domLoading" />
+                <ScalarProperty Name="domInteractive" ColumnName="domInteractive" />
+                <ScalarProperty Name="domContentLoadedEventStart" ColumnName="domContentLoadedEventStart" />
+                <ScalarProperty Name="domContentLoadedEventEnd" ColumnName="domContentLoadedEventEnd" />
+                <ScalarProperty Name="domComplete" ColumnName="domComplete" />
+                <ScalarProperty Name="loadEventStart" ColumnName="loadEventStart" />
+                <ScalarProperty Name="loadEventEnd" ColumnName="loadEventEnd" />
+                <ScalarProperty Name="prerenderSwitch" ColumnName="prerenderSwitch" />
+                <ScalarProperty Name="redirectCount" ColumnName="redirectCount" />
+                <ScalarProperty Name="initiatorType" ColumnName="initiatorType" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="navigationStart" ColumnName="navigationStart" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="clientIP" ColumnName="clientIP" />
+                <ScalarProperty Name="userAgent" ColumnName="userAgent" />
+                <ScalarProperty Name="browser" ColumnName="browser" />
+                <ScalarProperty Name="browserVersion" ColumnName="browserVersion" />
+                <ScalarProperty Name="hostMachineName" ColumnName="hostMachineName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="lsp_UpdateBerfClient" FunctionName="BerfDbModel.Store.lsp_UpdateBerfClient" />
+          <FunctionImportMapping FunctionImportName="lsp_UpsertBerfClient" FunctionName="BerfDbModel.Store.lsp_UpsertBerfClient" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
