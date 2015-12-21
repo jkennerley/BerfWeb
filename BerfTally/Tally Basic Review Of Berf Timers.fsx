@@ -4,9 +4,10 @@ open FSharp.Data
 
 type KV = {key:string  ; value:float }
 
-type TestTimeLogDataFile  = JsonProvider< """C:\Users\John\OneDrive\BerfWeb\TestTimeLogsForTypeProvider.txt""">
+//type TestTimeLogDataFile  = JsonProvider< """C:\Users\John\OneDrive\BerfWeb\TestTimeLogsForTypeProvider.txt""">
+type TestTimeLogDataFile  = JsonProvider< """C:\Users\john kennerley\Dropbox\BerfWeb\TestTimeLogsForTypeProvider.txt""">
 
-let testTimeLogDataFilename  = """C:\Users\John\OneDrive\BerfWeb\TestTimeLogsForTypeProvider.txt"""
+let testTimeLogDataFilename  = """C:\Users\john kennerley\Dropbox\BerfWeb\TestTimeLogsForTypeProvider.txt"""
 
 let ys = TestTimeLogDataFile.Load(testTimeLogDataFilename) |> Seq.sortByDescending (fun x ->x.Time )
 
@@ -14,7 +15,8 @@ let ys = TestTimeLogDataFile.Load(testTimeLogDataFilename) |> Seq.sortByDescendi
 for x in ys do printfn "%7.0f %s %s " ( float x.Time) x.Server x.Sig 
 
 // just for one particular pc ...
-let xs = ys |> Seq.where (fun x ->  x.Server = "LPC" ) |> Seq.toList 
+// let xs = ys |> Seq.where (fun x ->  x.Server = "LPC" ) |> Seq.toList 
+let xs = ys |> Seq.where (fun x ->  x.Server = "DEVTEAM4" ) |> Seq.toList 
 
 // review data
 for x in xs do printfn "%7.0f %s %s " ( float x.Time) x.Server x.Sig 

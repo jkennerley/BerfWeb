@@ -69,3 +69,8 @@
 {"Id":"a505f608-b2ec-464a-8dbb-73a08434872f","RunSigId":"","SigId":"F#SD","Sig":"ReadNoLock n records","Time":736.0,"Count":1000,"EventDt":"2015-12-20T19:50:12","ClientSig":"","ClientSigVer":"","Server":"LPC"}
 {"Id":"34b29a5f-b255-479f-9f51-c57438081ffd","RunSigId":"","SigId":"F#SD","Sig":"Update n","Time":1063.0,"Count":1000,"EventDt":"2015-12-20T19:50:13","ClientSig":"","ClientSigVer":"","Server":"LPC"}
 {"Id":"f8be5996-720a-4167-8bac-04bffb3572fb","RunSigId":"","SigId":"F#SD","Sig":"Insert n records","Time":737.0,"Count":1000,"EventDt":"2015-12-20T19:50:14","ClientSig":"","ClientSigVer":"","Server":"LPC"}
+{"Id":"a1a65aeb-95c3-49ef-8638-79c9569ad107","RunSigId":"","SigId":"F#SD","Sig":"Read n records","Time":2288.0,"Count":1000,"EventDt":"2015-12-21T16:37:43","ClientSig":"","ClientSigVer":"","Server":"DEVTEAM4"}
+{"Id":"8933984e-e15f-447c-9ff9-f5fc903d1197","RunSigId":"","SigId":"F#SD","Sig":"Delete n records","Time":8149.0,"Count":1000,"EventDt":"2015-12-21T16:37:51","ClientSig":"","ClientSigVer":"","Server":"DEVTEAM4"}
+{"Id":"99c38f67-36cf-4bae-b879-23cb10ab9910","RunSigId":"","SigId":"F#SD","Sig":"ReadNoLock n records","Time":763.0,"Count":1000,"EventDt":"2015-12-21T16:37:52","ClientSig":"","ClientSigVer":"","Server":"DEVTEAM4"}
+{"Id":"be8f4d56-2472-4b95-b285-d97762a5bbc9","RunSigId":"","SigId":"F#SD","Sig":"Update n","Time":1024.0,"Count":1000,"EventDt":"2015-12-21T16:37:53","ClientSig":"","ClientSigVer":"","Server":"DEVTEAM4"}
+{"Id":"64d275c8-ba08-46e0-90f5-7c103f468cf0","RunSigId":"","SigId":"F#SD","Sig":"Insert n records","Time":569.0,"Count":1000,"EventDt":"2015-12-21T16:37:54","ClientSig":"","ClientSigVer":"","Server":"DEVTEAM4"}

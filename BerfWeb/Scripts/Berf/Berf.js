@@ -12,11 +12,9 @@ var Berf;
                 return toExtend;
             };
             this.queue = [];
-            var tag = document.querySelector ? document.querySelector("[berf-url]") : { getAttribute: function () {
-            } };
+            var tag = document.querySelector ? document.querySelector("[berf-url]") : { getAttribute: function () { } };
             this.url = tag.getAttribute("berf-url");
-            var addEventListener = typeof window.addEventListener === "undefined" ? function () {
-            } : window.addEventListener;
+            var addEventListener = typeof window.addEventListener === "undefined" ? function () { } : window.addEventListener;
             addEventListener("beforeunload", function (e) {
                 _this.onBeforeUnload(e);
             });
@@ -111,8 +109,7 @@ var Berf;
             http.open("POST", url, async);
             http.setRequestHeader("Content-type", "application/json;charset=UTF-8");
             http.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-            var upload = http.upload || { addEventListener: function () {
-            } };
+            var upload = http.upload || { addEventListener: function () { } };
             upload.addEventListener("error", function (e) {
                 throw e;
             }, false);
