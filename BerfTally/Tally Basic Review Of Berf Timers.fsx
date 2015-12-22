@@ -14,10 +14,11 @@ let ys = TestTimeLogDataFile.Load(testTimeLogDataFilename) |> Seq.sortByDescendi
 // review data
 for x in ys do printfn "%7.0f %s %s " ( float x.Time) x.Server x.Sig 
 
-// just for one particular pc ...
+// filtering
 // let xs = ys |> Seq.where (fun x ->  x.Server = "LPC" ) |> Seq.toList 
-let xs = ys |> Seq.where (fun x ->  x.Server = "DEVTEAM4" ) |> Seq.toList 
-
+// let xs = ys |> Seq.where (fun x ->  x.Server = "DEVTEAM4" ) |> Seq.toList 
+let xs = ys
+ 
 // review data
 for x in xs do printfn "%7.0f %s %s " ( float x.Time) x.Server x.Sig 
 
@@ -27,7 +28,7 @@ let serverTraitsGroups =
     |> Seq.groupBy (fun x -> (sprintf "%s, %s" x.Server x.Sig) )
     |> Seq.toList
 
-// map to key.value and sort
+// map to key,value and sort
 let serverTraitAverages =
     serverTraitsGroups
     |> Seq.map ( fun (key,values) -> (key , values |> Seq.averageBy(fun x-> float x.Time ) ))

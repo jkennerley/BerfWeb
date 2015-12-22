@@ -1,4 +1,4 @@
-﻿namespace Berf.Data
+﻿namespace Berf.DataEf
 {
     public class MiRet
     {
@@ -6,7 +6,7 @@
     }
 }
 
-namespace Berf.Data
+namespace Berf.DataEf
 {
     using global::BerfDacAltIntegrationTest.BerfDataEfContext;
     //using Mi.Core;
@@ -42,6 +42,7 @@ namespace Berf.Data
         //    return Ctx.BerfClients;
         //}
         //
+
         public MiRet InsertBerfClient(BerfClient be)
         {
             var miRet = new MiRet { };
@@ -58,6 +59,38 @@ namespace Berf.Data
         
             return miRet;
         }
+
+        public MiRet UpdateBerfClient(BerfClient be)
+        {
+            // Declaration
+            var miRet = new MiRet { };
+
+            // Code
+            this.Ctx.BerfClients.Attach(be);
+
+            this.Ctx.Entry(be).State = EntityState.Modified;
+
+            // Return
+            return miRet;
+        }
+
+
+        public MiRet DeleteBerfClient(BerfClient be)
+        {
+            // Declaration
+            var miRet = new MiRet { };
+
+            // Code
+            this.Ctx.BerfClients.Attach(be);
+
+            this.Ctx.Entry(be).State = EntityState.Deleted;
+
+            // Return
+            return miRet;
+        }
+
+
+
 
         public MiRet Save()
         {
