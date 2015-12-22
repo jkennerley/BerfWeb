@@ -70,7 +70,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BerfDacAlt.IntegrationTest.cs" />
+    <Compile Include="BerfEfModel\BerfClientExtension.cs" />
+    <Compile Include="BerfEfModel\TimedItem.cs" />
+    <Compile Include="BerfEfTest\BerfDacAlt.IntegrationTest.cs" />
     <Compile Include="BerfDataEfContext\BerfClient.cs">
       <DependentUpon>BerfEf6DbContextGenerator.tt</DependentUpon>
     </Compile>
@@ -108,7 +110,9 @@
     <Compile Include="BerfDataEfContext\lsp_ReadBerfClient_Result.cs">
       <DependentUpon>BerfEf6DbContextGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="BerfData\BerfData.cs" />
+    <Compile Include="BerfEfModel\BerfEfModel.cs" />
+    <Compile Include="BerfEfRepo\BerfRepo.cs" />
+    <Compile Include="BerfEfRepoPlus\BerfEfRepoBc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

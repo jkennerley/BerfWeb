@@ -1,52 +1,31 @@
-﻿namespace Berf.DataEf
+﻿namespace Berf.Data
 {
-    public class MiRet
-    {
-        public bool IsOK { get; set; }
-    }
-}
-
-namespace Berf.DataEf
-{
-    using global::BerfDacAltIntegrationTest.BerfDataEfContext;
-    //using Mi.Core;
-    //using Berf.DataEF.BerfDataEfContext;
-    //using BerfDacAltIntegrationTest.;
-
-    using System;
-    using System.Collections.Generic;
+    using Berf.DataEf;
+    using BerfDacAltIntegrationTest.BerfDataEfContext;
     using System.Data.Entity;
-    using System.Linq;
 
-    //public class MiRepo : IMiRepo
-    public class BerfRepo
+    public class BerfEfDac
     {
         public BerfDbEntities Ctx { get; set; }
 
-        public BerfRepo(BerfDbEntities ctx)
+        public BerfEfDac(BerfDbEntities ctx)
         {
             this.Ctx = ctx;
-        
+
             // anything that is lazy loaded will attempt to create the object that is behind them
             // watch out for circular dependencies, Topic gets replies but may also get Topics that they belong to
             // must eager load
             this.Ctx.Configuration.LazyLoadingEnabled = false;
-        
+
             // handle change management in straightforward way ;
             // proxy gen can cause problems with serialization, can get props that are not really part of your models
             this.Ctx.Configuration.ProxyCreationEnabled = false;
         }
 
-        //public IQueryable<BerfClient> SelectBerfClient()
-        //{
-        //    return Ctx.BerfClients;
-        //}
-        //
-
         public MiRet InsertBerfClient(BerfClient be)
         {
             var miRet = new MiRet { };
-        
+
             try
             {
                 this.Ctx.BerfClients.Add(be);
@@ -56,7 +35,7 @@ namespace Berf.DataEf
             {
                 miRet.IsOK = false;
             }
-        
+
             return miRet;
         }
 
@@ -74,7 +53,6 @@ namespace Berf.DataEf
             return miRet;
         }
 
-
         public MiRet DeleteBerfClient(BerfClient be)
         {
             // Declaration
@@ -89,28 +67,30 @@ namespace Berf.DataEf
             return miRet;
         }
 
-
-
-
         public MiRet Save()
         {
             var miRet = new MiRet { IsOK = false };
-        
+
             try
             {
-               miRet.IsOK = Ctx.SaveChanges() > 0;
+                miRet.IsOK = Ctx.SaveChanges() > 0;
             }
             catch (System.Exception ex)
             {
                 var exMsg = ex.Message;
                 miRet.IsOK = false;
             }
-        
+
             return miRet;
         }
 
-
         /*
+
+        public IQueryable<BerfClient> SelectBerfClient()
+        {
+            return Ctx.BerfClients;
+        }
+
         public IQueryable<Idea> SelectIdeasWithNotes()
         {
             var ret = Ctx
@@ -119,7 +99,7 @@ namespace Berf.DataEf
 
             return ret;
         }
-        
+
         public IQueryable<Idea> SelectIdeasWithAll()
         {
             var ret = Ctx
@@ -298,8 +278,5 @@ namespace Berf.DataEf
         }
 
         */
-
-
     }
 }
-
