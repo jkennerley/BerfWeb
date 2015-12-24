@@ -4,10 +4,13 @@ open FSharp.Data
 
 type KV = { key:string ; mean:float ; n:int }
 
-//type TestTimeLogDataFile  = JsonProvider< """C:\Users\John\OneDrive\BerfWeb\TestTimeLogsForTypeProvider.txt""">
-type TestTimeLogDataFile  = JsonProvider< """C:\Users\john kennerley\Dropbox\BerfWeb\TestTimeLogsForTypeProvider.txt""">
+// dv4
+//type TestTimeLogDataFile  = JsonProvider< """C:\Users\john kennerley\Dropbox\BerfWeb\TestTimeLogsForTypeProvider.txt""">
+// let testTimeLogDataFilename  = """C:\Users\john kennerley\Dropbox\BerfWeb\TestTimeLogsForTypeProvider.txt"""
 
-let testTimeLogDataFilename  = """C:\Users\john kennerley\Dropbox\BerfWeb\TestTimeLogsForTypeProvider.txt"""
+// l-
+type TestTimeLogDataFile  = JsonProvider< """C:\Users\John\OneDrive\BerfWeb\TestTimeLogsForTypeProvider.txt""">
+let testTimeLogDataFilename  = """C:\Users\John\OneDrive\BerfWeb\TestTimeLogsForTypeProvider.txt"""
 
 let ys = TestTimeLogDataFile.Load(testTimeLogDataFilename) |> Seq.sortByDescending (fun x ->x.Time )
 
@@ -15,13 +18,13 @@ let ys = TestTimeLogDataFile.Load(testTimeLogDataFilename) |> Seq.sortByDescendi
 for x in ys do printfn "%7.0f %s %s %s" (float x.Time) x.Server x.Sig x.SigId
 
 // filtering
-// let xs = ys |> Seq.where (fun x ->  x.Server = "LPC" ) |> Seq.toList 
+let xs = ys |> Seq.where (fun x ->  x.Server = "LPC" ) |> Seq.toList 
 // let xs = ys |> Seq.where (fun x ->  x.Server = "DEVTEAM4" ) |> Seq.toList 
-let xs = ys
+// let xs = ys
  
 // review data
 //for x in xs do printfn "%7.0f %s %s " ( float x.Time) x.Server x.Sig 
-//for x in xs do printfn "%A" x 
+for x in xs do printfn "%A" x 
 
 // group by server, sig
 let serverTraitsGroups =

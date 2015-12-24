@@ -4,7 +4,7 @@
     using System;
     using System.Diagnostics;
 
-    public class DomainTypes
+    public class AppConfig
     {
         public string FileDropDirectory { get; set; }
         public string ProjectNameSpace { get; set; }
@@ -45,7 +45,9 @@
 
         public static void saveTimedItem(TimedItem timedItem, Stopwatch watch)
         {
-            var path = @"C:\Users\john kennerley\Dropbox\BerfWeb" + @"\" + @"TestTimeLog.txt";
+            var config = BerfDacAltIntegrationTest.BerfDacHelpers.getAppConfig();
+            // var path = @"C:\Users\john kennerley\Dropbox\BerfWeb" + @"\" + @"TestTimeLog.txt";
+            var path = config.FileDropDirectory + @"\" + @"TestTimeLog.txt";
             var json = JsonConvert.SerializeObject(timedItem);
             var f = String.Format("{0}{1}", Environment.NewLine, json);
             System.IO.File.AppendAllText(path, f);

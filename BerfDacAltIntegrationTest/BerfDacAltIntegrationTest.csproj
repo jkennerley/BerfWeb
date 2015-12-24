@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BefL2sModel\BerfClientL2sExtension.cs" />
+    <Compile Include="BerfDacHelpers.cs" />
     <Compile Include="BerfEfModel\BerfClientEfExtension.cs" />
     <Compile Include="BerfEfModel\TimedItem.cs" />
     <Compile Include="BerfEfTest\BerfEf.IntegrationTest.cs" />
