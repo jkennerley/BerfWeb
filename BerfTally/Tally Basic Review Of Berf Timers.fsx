@@ -38,7 +38,6 @@ let serverTraitAverages =
     |> Seq.sortByDescending (fun x -> x.mean)
     |> Seq.toList
 
-
 // for x in serverTraitAverages do printfn "%A" x 
 
 // seconds per 1000

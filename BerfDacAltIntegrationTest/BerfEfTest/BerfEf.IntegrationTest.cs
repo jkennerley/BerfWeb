@@ -9,7 +9,7 @@
     using System.Linq;
     using Xunit;
 
-    public class BerfDacAltIntegrationTest
+    public class BerfEfIntegrationTest
     {
         public List<BerfClient> getTestableInserts(int n)
         {
