@@ -2,29 +2,27 @@
 {
     using Berf.Data;
     using Berf.DataEf;
-
     using global::BerfDacAltIntegrationTest.BerfDataEfContext;
+    using System;
 
     public class BerfEfRepo
     {
-        public static BerfEfDac GetRepo()
+        public static BerfEfDal GetDal()
         {
             var berfDbEntities = new BerfDbEntities();
 
-            var repo = new BerfEfDac(berfDbEntities);
-
-            return repo;
+            return new BerfEfDal(berfDbEntities);
         }
 
         public static MiRet InsertBerfClient(BerfClient model)
         {
-            var repo = GetRepo();
+            var dal = GetDal();
 
-            var ret = repo.InsertBerfClient(model);
+            var ret = dal.InsertBerfClient(model);
 
             if (ret != null)
             {
-                repo.Save();
+                dal.Save();
             }
 
             return ret;
@@ -32,13 +30,13 @@
 
         public static MiRet UpdateBerfClient(BerfClient model)
         {
-            var repo = GetRepo();
+            var dal = GetDal();
 
-            var ret = repo.UpdateBerfClient(model);
+            var ret = dal.UpdateBerfClient(model);
 
             if (ret != null)
             {
-                repo.Save();
+                dal.Save();
             }
 
             return ret;
@@ -46,14 +44,23 @@
 
         public static MiRet DeleteBerfClient(BerfClient model)
         {
-            var repo = GetRepo();
+            var dal = GetDal();
 
-            var ret = repo.DeleteBerfClient(model);
+            var ret = dal.DeleteBerfClient(model);
 
             if (ret != null)
             {
-                repo.Save();
+                dal.Save();
             }
+
+            return ret;
+        }
+
+        public static BerfClient SelectBerfClient(Guid id)
+        {
+            var dal = GetDal();
+
+            var ret = dal.SelectBerfClient(id);
 
             return ret;
         }

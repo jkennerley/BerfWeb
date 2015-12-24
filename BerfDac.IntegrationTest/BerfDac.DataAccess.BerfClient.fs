@@ -19,7 +19,7 @@ let getTestableInserts n =
 
 [<Fact>]
 [<Trait("category", "BerfClient")>]
-let ``XX insert should not except``() =
+let ``insert should not except``() =
     // Arrange
     // a record to be inserted
     let be = { (getTestableInsert()) with source  = "ITG_IS_INSERTED_TEST_RECORD" }

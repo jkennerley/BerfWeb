@@ -3,7 +3,7 @@
     using global::BerfDacAltIntegrationTest.BerfDataEfContext;
     using System;
 
-    public static class BerfClientExtension
+    public static class BerfClientEfExtension
     {
         public static BerfClient BerfClientZero()
         {

@@ -1,4 +1,4 @@
-﻿namespace Berf.EfIntegrationTest
+﻿namespace Berf.RepoEf
 {
     using EfRepo;
     using EfTest;
@@ -17,10 +17,17 @@
 
             for (var i = 0; i < n; i++)
             {
-                xs.Add(BerfClientExtension.BerfClientZero());
+                xs.Add(BerfClientEfExtension.BerfClientZero());
             }
 
             return xs;
+        }
+
+        public string thisFunctionName()
+        {
+            var stackTrace = new StackTrace();
+            var frame = stackTrace.GetFrame(1);
+            return frame.GetMethod().Name;
         }
 
         [Theory]
@@ -43,12 +50,7 @@
 
             // Log stop watch
             watch.Stop();
-            var timedItem = TimedItem.TimedItemZero();
-            //timedItem.Sig = thisFunctionName();
-            timedItem.Sig = "insert_n_records_C#Ef";
-            timedItem.SigId = "C#Ef";
-            timedItem.Time = (float)watch.ElapsedMilliseconds;
-            timedItem.Count = n;
+            var timedItem = TimedItem.TimedItemZero("", this.thisFunctionName(), "C#Ef", n, (float)watch.ElapsedMilliseconds);
             TimedItem.saveTimedItem(timedItem, watch);
         }
 
@@ -86,12 +88,7 @@
 
             // Log stop watch
             watch.Stop();
-            var timedItem = TimedItem.TimedItemZero();
-            //timedItem.Sig = thisFunctionName();
-            timedItem.Sig = "update_n_records_C#Ef";
-            timedItem.SigId = "C#Ef";
-            timedItem.Time = (float)watch.ElapsedMilliseconds;
-            timedItem.Count = n;
+            var timedItem = TimedItem.TimedItemZero("", this.thisFunctionName(), "C#Ef", n, (float)watch.ElapsedMilliseconds);
             TimedItem.saveTimedItem(timedItem, watch);
         }
 
@@ -135,6 +132,37 @@
             timedItem.SigId = "C#Ef";
             timedItem.Time = (float)watch.ElapsedMilliseconds;
             timedItem.Count = n;
+            TimedItem.saveTimedItem(timedItem, watch);
+        }
+
+        [Theory]
+        [InlineData(1000)]
+        public void read_n_records(int n)
+        {
+            // Arrange
+
+            // Act
+            var watch = new Stopwatch();
+            watch.Start();
+
+            // a record to be inserted and then read back
+            var bs = this.getTestableInserts(n);
+
+            // insert
+            var insertedRets =
+                bs
+                .Select(BerfEfRepo.InsertBerfClient)
+                .ToList();
+
+            // read
+            var bes =
+                bs
+                .Select(x => BerfEfRepo.SelectBerfClient(x.id))
+                .ToList();
+
+            // Log stop watch
+            watch.Stop();
+            var timedItem = TimedItem.TimedItemZero("", this.thisFunctionName(), "C#Ef", n, (float)watch.ElapsedMilliseconds);
             TimedItem.saveTimedItem(timedItem, watch);
         }
     }

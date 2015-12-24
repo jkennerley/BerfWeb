@@ -44,7 +44,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -70,9 +72,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BerfEfModel\BerfClientExtension.cs" />
+    <Compile Include="BefL2sModel\BerfClientL2sExtension.cs" />
+    <Compile Include="BerfEfModel\BerfClientEfExtension.cs" />
     <Compile Include="BerfEfModel\TimedItem.cs" />
-    <Compile Include="BerfEfTest\BerfDacAlt.IntegrationTest.cs" />
+    <Compile Include="BerfEfTest\BerfEf.IntegrationTest.cs" />
+    <Compile Include="BerfEfTest\BerfL2s.IntegrationTest.cs" />
     <Compile Include="BerfDataEfContext\BerfClient.cs">
       <DependentUpon>BerfEf6DbContextGenerator.tt</DependentUpon>
     </Compile>
@@ -111,8 +115,11 @@
       <DependentUpon>BerfEf6DbContextGenerator.tt</DependentUpon>
     </Compile>
     <Compile Include="BerfEfModel\BerfEfModel.cs" />
-    <Compile Include="BerfEfRepo\BerfRepo.cs" />
-    <Compile Include="BerfEfRepoPlus\BerfEfRepoBc.cs" />
+    <Compile Include="BerfEDac\BerfEfDal.cs" />
+    <Compile Include="BerfEfRepo\BerfEfRepo.cs" />
+    <Compile Include="BerfL2sDal\BerfL2sDal.cs" />
+    <Compile Include="BerfL2SDataContext\BerfDataContextDal.cs" />
+    <Compile Include="BerfL2sRepo\BerfL2sRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +133,7 @@
     <None Include="BerfDataEfContext\BerfDataEf.edmx.diagram">
       <DependentUpon>BerfDataEf.edmx</DependentUpon>
     </None>
+    <None Include="BerfL2SDataContext\Berf_Dal_L2S_SqlMetal.bat" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -149,11 +157,13 @@
       <LastGenOutput>BerfEf6DbContextGenerator.cs</LastGenOutput>
       <DependentUpon>BerfDataEf.edmx</DependentUpon>
     </Content>
+    <Content Include="BerfL2SDataContext\rep.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

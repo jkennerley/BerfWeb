@@ -24,19 +24,21 @@
         public string ClientSigVer { get; set; }
         public string Server { get; set; }
 
-        public static TimedItem TimedItemZero()
+        public static TimedItem TimedItemZero(string runSigId  = "", string sig = "", string sigId = "" , int count = 0 , float time = (float)0.0, string clientSig = "", string clientSigVer = "" )
         {
+            var dtString = @"yyyy-MM-ddTHH\:mm\:ss"; 
+
             return new TimedItem
             {
                 Id = Guid.NewGuid().ToString(),
-                RunSigId = "",
-                Sig = "",
-                SigId = "",
-                Time = 0.0,
-                Count = 0,
-                EventDt = DateTime.UtcNow.ToString(@"yyyy-MM-ddTHH\:mm\:ss"),
-                ClientSig = "",
-                ClientSigVer = "",
+                RunSigId = runSigId,
+                Sig = sig,
+                SigId = sigId,
+                Time =time ,
+                Count = count,
+                EventDt = DateTime.UtcNow.ToString(dtString),
+                ClientSig = clientSig,
+                ClientSigVer = clientSigVer,
                 Server = System.Environment.MachineName
             };
         }
@@ -47,9 +49,6 @@
             var json = JsonConvert.SerializeObject(timedItem);
             var f = String.Format("{0}{1}", Environment.NewLine, json);
             System.IO.File.AppendAllText(path, f);
-            //let config = getAppConfig()
-            //let path = config.FileDropDirectory + @"\" + @"TestTimeLog.txt";
-            //File.AppendAllText(getTestTimeLogFilename(), (sprintf "%s%s" System.Environment.NewLine(JsonConvert.SerializeObject(timedItem))) );
         }
     }
 }
